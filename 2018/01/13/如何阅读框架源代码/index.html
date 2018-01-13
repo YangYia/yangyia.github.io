@@ -80,6 +80,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="杨溢的博客" type="application/atom+xml" />
 
@@ -88,17 +90,17 @@
 
 
 
-<meta name="description" content="Canvas画布是HTML5的特性，可以制作动画、游戏；手册文档：https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial 放置一个canvas标签&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt;     &amp;lt;meta chars">
+<meta name="description" content="不管对于那个段位的 Developer 来说，读源码都是一件好处颇多的事情，特别于初学者而言，这能迅速的吸纳优秀框架精华代码营养，迅速成长。不巧的是，晦涩难懂的源码，很容易让人心生怯意。今天分享就来谈一谈读源码的方法，希望能帮到一些有心读源码的朋友 一、了解框架解决了什么问题 这不光对读源码有帮助，对整个学习都很有帮助。思考一个问题：你学习 Vue\React 的原因，除了它们如日中天，再不学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Canvas基础知识">
-<meta property="og:url" content="http://yoursite.com/2017/12/29/canvas基础知识/index.html">
+<meta property="og:title" content="如何阅读框架源代码">
+<meta property="og:url" content="http://yoursite.com/2018/01/13/如何阅读框架源代码/index.html">
 <meta property="og:site_name" content="杨溢的博客">
-<meta property="og:description" content="Canvas画布是HTML5的特性，可以制作动画、游戏；手册文档：https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial 放置一个canvas标签&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt;     &amp;lt;meta chars">
+<meta property="og:description" content="不管对于那个段位的 Developer 来说，读源码都是一件好处颇多的事情，特别于初学者而言，这能迅速的吸纳优秀框架精华代码营养，迅速成长。不巧的是，晦涩难懂的源码，很容易让人心生怯意。今天分享就来谈一谈读源码的方法，希望能帮到一些有心读源码的朋友 一、了解框架解决了什么问题 这不光对读源码有帮助，对整个学习都很有帮助。思考一个问题：你学习 Vue\React 的原因，除了它们如日中天，再不学习">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-29T06:28:47.433Z">
+<meta property="og:updated_time" content="2018-01-13T11:56:00.715Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Canvas基础知识">
-<meta name="twitter:description" content="Canvas画布是HTML5的特性，可以制作动画、游戏；手册文档：https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial 放置一个canvas标签&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt;     &amp;lt;meta chars">
+<meta name="twitter:title" content="如何阅读框架源代码">
+<meta name="twitter:description" content="不管对于那个段位的 Developer 来说，读源码都是一件好处颇多的事情，特别于初学者而言，这能迅速的吸纳优秀框架精华代码营养，迅速成长。不巧的是，晦涩难懂的源码，很容易让人心生怯意。今天分享就来谈一谈读源码的方法，希望能帮到一些有心读源码的朋友 一、了解框架解决了什么问题 这不光对读源码有帮助，对整个学习都很有帮助。思考一个问题：你学习 Vue\React 的原因，除了它们如日中天，再不学习">
 
 
 
@@ -128,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/29/canvas基础知识/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/13/如何阅读框架源代码/"/>
 
 
 
 
 
-  <title>Canvas基础知识 | 杨溢的博客</title>
+  <title>如何阅读框架源代码 | 杨溢的博客</title>
   
 
 
@@ -241,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/29/canvas基础知识/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/13/如何阅读框架源代码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YangYi">
@@ -258,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Canvas基础知识</h1>
+          <h1 class="post-title" itemprop="name headline">如何阅读框架源代码</h1>
         
 
         <div class="post-meta">
@@ -270,8 +272,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-29T13:39:33+08:00">
-                2017-12-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-13T19:46:43+08:00">
+                2018-01-13
               </time>
             
 
@@ -308,58 +310,20 @@
       
 
       
-        <p>Canvas画布是HTML5的特性，可以制作动画、游戏；<br>手册文档：<a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial</a></p>
-<h2 id="放置一个canvas标签"><a href="#放置一个canvas标签" class="headerlink" title="放置一个canvas标签"></a>放置一个canvas标签</h2><pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;Document&lt;/title&gt;
-    &lt;style type=&quot;text/css&quot;&gt;
-        canvas{
-            border:1px solid #333;
-        }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;canvas id=&quot;mycanvas&quot; width=&quot;600&quot; height=&quot;400&quot;&gt;&lt;/canvas&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>注意，千万不要用css来设置width、height，应该使用canvas标签的属性。</p>
-<h2 id="js部分"><a href="#js部分" class="headerlink" title="js部分"></a>js部分</h2><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-    //得到节点
-    var mycanvas = document.getElementById(&quot;mycanvas&quot;);
-    //得到上下文
-    var ctx = mycanvas.getContext(&quot;2d&quot;);
-
-    //绘制一个矩形
-    ctx.fillStyle = &quot;blue&quot;;
-    ctx.fillRect(100 , 100 , 180 , 60);
-
-    //绘制一个圆形
-    ctx.fillStyle = &quot;gold&quot;;
-    ctx.beginPath();
-    ctx.arc(390 , 190 , 110 , 0 , Math.PI * 2 , true);
-    ctx.fill();
-    ctx.strokeStyle = &quot;red&quot;;
-    ctx.lineWidth = 10;
-    ctx.stroke();
-    ctx.closePath();
-&lt;/script&gt;
-</code></pre><h2 id="所有的属性语句，都是进行一些配置"><a href="#所有的属性语句，都是进行一些配置" class="headerlink" title="所有的属性语句，都是进行一些配置"></a>所有的属性语句，都是进行一些配置</h2><pre><code>ctx.fillStyle = &quot;blue&quot;;
-...
-ctx.fillStyle = &quot;gold&quot;;
-....
-ctx.strokeStyle = &quot;red&quot;;
-....
-ctx.lineWidth = 10;
-</code></pre><h2 id="所有的方法语句，都是在执行“动令”"><a href="#所有的方法语句，都是在执行“动令”" class="headerlink" title="所有的方法语句，都是在执行“动令”"></a>所有的方法语句，都是在执行“动令”</h2><pre><code>ctx.fillRect(100 , 100 , 180 , 60);
-....
-ctx.arc(390 , 190 , 110 , 0 , Math.PI * 2 , true);
-........
-ctx.fill();
-...
-ctx.stroke();
-</code></pre><p>canvas的API确实很简单，常用的属性和方法加起来只有16个。</p>
+        <blockquote>
+<p>不管对于那个段位的 Developer 来说，读源码都是一件好处颇多的事情，特别于初学者而言，这能迅速的吸纳优秀框架精华代码营养，迅速成长。不巧的是，晦涩难懂的源码，很容易让人心生怯意。今天分享就来谈一谈读源码的方法，希望能帮到一些有心读源码的朋友</p>
+<h2 id="一、了解框架解决了什么问题"><a href="#一、了解框架解决了什么问题" class="headerlink" title="一、了解框架解决了什么问题"></a>一、了解框架解决了什么问题</h2></blockquote>
+<p>这不光对读源码有帮助，对整个学习都很有帮助。思考一个问题：你学习 Vue\React 的原因，除了它们如日中天，再不学习都不好意思找工作了，还掺杂了一些它们的某些优秀特性能给我带来某某好处的思考么？<br>新潮的框架，开发者需要而且也应该去了解，用人单位需要当然是本能的驱动力，什么火学什么也无可厚非，但是在闷声学习之前，需要加上一层思考，相比之前的技术体系，这个框架到底解决了什么问题，优势在哪，怀着目的去学习才不至于迷茫，例如 Vue\React 最大的优点是什么呢？组件化吧，带着框架是如何解决这个问题的疑问去学习，定能事半功倍<br>对于读源码来说，这一步就更关键了，如果都不了解代码是要干什么的，怎么会清楚它为什么这么写呢？再细分一下，在仔细阅读某个模块的文件的时候，也应当对模块的功能有个整体的把握</p>
+<h2 id="二、了解框架的设计思想"><a href="#二、了解框架的设计思想" class="headerlink" title="二、了解框架的设计思想"></a>二、了解框架的设计思想</h2><p>这一步尤为关键，我们看不懂源码（或者看起来举步维艰），并不是因为不懂某一句语法，而是不明白作者的思路。举一个简单的例子：<br>  //这个方法可以获得point2顶角的弧度值<br>    function getAngle(point1, point2, point3) {<br>        var bb = (point2.y - point1.y)<em>(point2.y - point1.y) + (point2.x - point1.x)</em>(point2.x - point1.x);<br>        var aa = (point3.y - point1.y)<em>(point3.y - point1.y) + (point3.x - point1.x)</em>(point3.x - point1.x);<br>        var cc = (point3.y - point2.y)<em>(point3.y - point2.y) + (point3.x - point2.x)</em>(point3.x - point2.x);<br>        var cosa = (bb + cc - aa)/(2<em>Math.sqrt(bb)</em>Math.sqrt(cc));<br>        return Math.acos(cosa);<br>    }<br>    getAngle 方法接收三个坐标参数，可以计算出 point2 顶角的弧度值，如果不告诉你这使用了运用三角形的余弦定理，恐怕你看半天也看不出来这是怎么算出来的</p>
+<p>那么我们可以通过什么渠道去了解框架的设计思想：</p>
+<ul>
+<li>到框架的官网看文档，开源的框架，甭管详不详细，这肯定是第一手权威资料</li>
+<li>到网上搜别人的分析总结(源码分析也不会少)，大多数情况下，都会有大神已经研究过了，站在巨人的肩膀上，能省不少事</li>
+</ul>
+<p>另外，设计思想是整个框架层面的，对于每一个实现细节，又会使用不少设计模式，例如函数式编程（Js 中最为常用）、单例模式、代理模式、工厂模式等等，这就需要平时的积累了。有一定代码量的积累之后，建议阅读一些设计模式类的书籍，对自己的代码设计，以及阅读别人的源码，都很有益处。</p>
+<h2 id="三、搭建调试环境，摸清执行主脉络"><a href="#三、搭建调试环境，摸清执行主脉络" class="headerlink" title="三、搭建调试环境，摸清执行主脉络"></a>三、搭建调试环境，摸清执行主脉络</h2><p>第一节我们提到，细分到每个模块，要对模块功能有个整体的把握，如何去做到这个“把握”？除了官方文档和网上查阅的资料，最好的办法就是写一个简单的 Demo，搭建好测试环境，增加一些调试信息，自然能理清除框架的生命周期中，每一步需要调用那个模块（对于目录结构很清晰的优秀框架，有时候也可以凭直觉猜测，打印日志确认）</p>
+<h2 id="四、分清主次"><a href="#四、分清主次" class="headerlink" title="四、分清主次"></a>四、分清主次</h2><p>框架源码就是一颗枝繁叶茂的参天大树，而你要做的事情是从根部网上爬。树要这么多分支，时间又是这么昂贵，阅读的策略很重要。我们的阅读路径，要以主要流程为主（也就是树的主驱赶，这样才能尽可能快的到达顶点），对于一些细枝末节，再这之后再来慢慢啃（或者有必要的时候）例如，要去阅读 Vue 的源码，有个目录是解析模板，生成语法树 AST 从而最终生成 Render Function 的, 其实这一步最关键的是这个 Render Function 的生成结果，对于如何去解析模板、生成语法树，可以先放一放，回头需要的时候再回头看。否则你很容易卡死在某个点上出不来，从而产生放弃的念头</p>
+<p>五、坚持不放弃<br>技术策略得当，遇到棘手过不去的问题也很正常，这个时候考验的就是毅力了，继续调试、搜索资料、或者找个大神来问一问都行，只要不放弃就好~~</p>
 
       
     </div>
@@ -395,15 +359,15 @@ ctx.stroke();
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/01/13/Vue-组件间的样式污染/" rel="next" title="Vue 组件间的样式污染">
+                <i class="fa fa-chevron-left"></i> Vue 组件间的样式污染
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/13/性能优化部分总结/" rel="prev" title="性能优化部分总结">
-                性能优化部分总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -550,7 +514,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#放置一个canvas标签"><span class="nav-number">1.</span> <span class="nav-text">放置一个canvas标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js部分"><span class="nav-number">2.</span> <span class="nav-text">js部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#所有的属性语句，都是进行一些配置"><span class="nav-number">3.</span> <span class="nav-text">所有的属性语句，都是进行一些配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#所有的方法语句，都是在执行“动令”"><span class="nav-number">4.</span> <span class="nav-text">所有的方法语句，都是在执行“动令”</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、了解框架解决了什么问题"><span class="nav-number">1.</span> <span class="nav-text">一、了解框架解决了什么问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、了解框架的设计思想"><span class="nav-number">2.</span> <span class="nav-text">二、了解框架的设计思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、搭建调试环境，摸清执行主脉络"><span class="nav-number">3.</span> <span class="nav-text">三、搭建调试环境，摸清执行主脉络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、分清主次"><span class="nav-number">4.</span> <span class="nav-text">四、分清主次</span></a></li></ol></div>
             
 
           </div>
