@@ -345,26 +345,41 @@
 <p>4.尽量能用正则的就不用字符串方法(正则是操作字符串的底层语言)</p>
 <p>5.闭包(没用的子函数，释放掉)</p>
 <p>性能优化的题：斐波那契数列又称兔子数列，一般解题是</p>
-<p>function fn(n){</p>
-<p>if(n&lt;=2){</p>
-<p>return fn(n-1)+fn(n-2);</p>
-<p>｝</p>
-<p>alert();括号里填想算的数字，这类方法是自己调用自己，递归，本身非常快，但咱们的重复的计算太多了，所以算的数越大时间越长。</p>
-<p>所以我们通过吧递归转化为非递归求解的方式，用一个数组存储重复的数据，算出的速度就大大提高了。</p>
-<p>var arr=[];</p>
-<p>function fn(n){</p>
-<p>if(n&lt;=2){</p>
-<p>return 1;</p>
-<p>}else{</p>
-<p>if(arr[n]){</p>
-<p>return arr[n];</p>
-<p>}else{</p>
-<p>arr[n]=fn(n-1)+fn(n-2);</p>
-<p>return arr[n];</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
+<pre><code>function fn(n){
 
+if(n&lt;=2){
+
+return fn(n-1)+fn(n-2);
+
+｝
+</code></pre><p>alert();括号里填想算的数字，这类方法是自己调用自己，递归，本身非常快，但咱们的重复的计算太多了，所以算的数越大时间越长。</p>
+<p>所以我们通过吧递归转化为非递归求解的方式，用一个数组存储重复的数据，算出的速度就大大提高了。</p>
+<pre><code>var arr=[];
+
+function fn(n){
+
+if(n&lt;=2){
+
+return 1;
+
+}else{
+
+if(arr[n]){
+
+return arr[n];
+
+}else{
+
+arr[n]=fn(n-1)+fn(n-2);
+
+return arr[n];
+
+}
+
+}
+
+}
+</code></pre>
           
         
       
