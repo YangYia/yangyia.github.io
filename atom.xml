@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-29T06:18:10.639Z</updated>
+  <updated>2017-12-29T06:28:47.433Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>关于Canvas</title>
+    <title>Canvas基础知识</title>
     <link href="http://yoursite.com/2017/12/29/canvas%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     <id>http://yoursite.com/2017/12/29/canvas基础知识/</id>
     <published>2017-12-29T05:39:33.143Z</published>
-    <updated>2017-12-29T06:18:10.639Z</updated>
+    <updated>2017-12-29T06:28:47.433Z</updated>
     
     <content type="html"><![CDATA[<p>Canvas画布是HTML5的特性，可以制作动画、游戏；<br>手册文档：<a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial</a></p><h2 id="放置一个canvas标签"><a href="#放置一个canvas标签" class="headerlink" title="放置一个canvas标签"></a>放置一个canvas标签</h2><pre><code>&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset=&quot;UTF-8&quot;&gt;    &lt;title&gt;Document&lt;/title&gt;    &lt;style type=&quot;text/css&quot;&gt;        canvas{            border:1px solid #333;        }    &lt;/style&gt;&lt;/head&gt;&lt;body&gt;    &lt;canvas id=&quot;mycanvas&quot; width=&quot;600&quot; height=&quot;400&quot;&gt;&lt;/canvas&gt;&lt;/body&gt;&lt;/html&gt;</code></pre><p>注意，千万不要用css来设置width、height，应该使用canvas标签的属性。</p><h2 id="js部分"><a href="#js部分" class="headerlink" title="js部分"></a>js部分</h2><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;    //得到节点    var mycanvas = document.getElementById(&quot;mycanvas&quot;);    //得到上下文    var ctx = mycanvas.getContext(&quot;2d&quot;);    //绘制一个矩形    ctx.fillStyle = &quot;blue&quot;;    ctx.fillRect(100 , 100 , 180 , 60);    //绘制一个圆形    ctx.fillStyle = &quot;gold&quot;;    ctx.beginPath();    ctx.arc(390 , 190 , 110 , 0 , Math.PI * 2 , true);    ctx.fill();    ctx.strokeStyle = &quot;red&quot;;    ctx.lineWidth = 10;    ctx.stroke();    ctx.closePath();&lt;/script&gt;</code></pre><h2 id="所有的属性语句，都是进行一些配置"><a href="#所有的属性语句，都是进行一些配置" class="headerlink" title="所有的属性语句，都是进行一些配置"></a>所有的属性语句，都是进行一些配置</h2><pre><code>ctx.fillStyle = &quot;blue&quot;;...ctx.fillStyle = &quot;gold&quot;;....ctx.strokeStyle = &quot;red&quot;;....ctx.lineWidth = 10;</code></pre><h2 id="所有的方法语句，都是在执行“动令”"><a href="#所有的方法语句，都是在执行“动令”" class="headerlink" title="所有的方法语句，都是在执行“动令”"></a>所有的方法语句，都是在执行“动令”</h2><pre><code>ctx.fillRect(100 , 100 , 180 , 60);....ctx.arc(390 , 190 , 110 , 0 , Math.PI * 2 , true);........ctx.fill();...ctx.stroke();</code></pre><p>canvas的API确实很简单，常用的属性和方法加起来只有16个。</p>]]></content>
     
