@@ -241,6 +241,181 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/13/性能优化部分总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YangYi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨溢的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/13/性能优化部分总结/" itemprop="url">性能优化部分总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-13T19:06:45+08:00">
+                2018-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1.Minimize HTTP Requests 减少http的请求</p>
+<p>合并文件 雪碧图</p>
+<p>2.Use a Content Delivery Network 利用CDN技术</p>
+<p>CDN内容分发网络 必须有钱</p>
+<p>把项目放在阿里云上，买一小块空间</p>
+<p>3.Gzip Components Gzip压缩</p>
+<p>减少了http请求的大小</p>
+<p>自动化工具，边写代码边压缩</p>
+<p>4.Put stylesheets at the top 把css放顶部</p>
+<p>为了更快渲染页面</p>
+<p>5.put script at the bottom 把js放底部</p>
+<p>js阻塞加载，一条执行完才会执行另一条</p>
+<p>自己的代码一般放顶部，别人的代码放底部</p>
+<p>6.将css和js外链</p>
+<p>7.Minify Javascript and css 减少js和css的体积</p>
+<p>8.Avoid Redirect 避免重定向 每做一次重定向就是重新发送了一次请求</p>
+<p>9.Remove Duplicate Scripts 删除重复的脚本</p>
+<p>10.用get方式请求ajax，因为post要请求两次</p>
+<p>11.Reduce the Number of DOM Elements 减少DOM元素数量 减少DOM操作，能用变量就用变量</p>
+<p>12.No 404s 不要出现404页面</p>
+<p>13.Reduce Cookie Size 减小cookie cookie特点：每次请求都有cookie</p>
+<p>14.优化css，用雪碧图</p>
+<p>15.不要在HTML中缩放图片 js重绘重排 css3只重绘</p>
+<p>尽量使用css3的运动，减少重排</p>
+<p>16.for-in 能用普通循环就用不for in循环(循环json和数组)</p>
+<p>17.功能越强大消耗的性能就越高，所以能用Math.floor就不用parseInt，parseInt能字符串转数字，也取整</p>
+<p>执行的性能：</p>
+<p>1.少用定时器 打开另一个网页的时候 浏览器会改动定时器</p>
+<p>2.尽量少操作DOM</p>
+<p>3.多用变量(声明变量的时候尽量都写在最前面)，预加载</p>
+<p>4.尽量能用正则的就不用字符串方法(正则是操作字符串的底层语言)</p>
+<p>5.闭包(没用的子函数，释放掉)</p>
+<p>性能优化的题：斐波那契数列又称兔子数列，一般解题是</p>
+<p>function fn(n){</p>
+<p>if(n&lt;=2){</p>
+<p>return fn(n-1)+fn(n-2);</p>
+<p>｝</p>
+<p>alert();括号里填想算的数字，这类方法是自己调用自己，递归，本身非常快，但咱们的重复的计算太多了，所以算的数越大时间越长。</p>
+<p>所以我们通过吧递归转化为非递归求解的方式，用一个数组存储重复的数据，算出的速度就大大提高了。</p>
+<p>var arr=[];</p>
+<p>function fn(n){</p>
+<p>if(n&lt;=2){</p>
+<p>return 1;</p>
+<p>}else{</p>
+<p>if(arr[n]){</p>
+<p>return arr[n];</p>
+<p>}else{</p>
+<p>arr[n]=fn(n-1)+fn(n-2);</p>
+<p>return arr[n];</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    <div>
+   
+    </div>
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/29/canvas基础知识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -581,7 +756,7 @@ ctx.stroke();
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
