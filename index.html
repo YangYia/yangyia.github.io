@@ -241,6 +241,197 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/13/Vue-组件间的样式污染/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YangYi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨溢的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/13/Vue-组件间的样式污染/" itemprop="url">Vue 组件间的样式污染</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-13T19:17:23+08:00">
+                2018-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、污染是如何产生的？"><a href="#一、污染是如何产生的？" class="headerlink" title="一、污染是如何产生的？"></a>一、污染是如何产生的？</h2><p>得益于 Vue-loader，在 Vue 中可以使用类似于 Web Component 的组件化写法,<code>&lt;template&gt;&lt;/template&gt;&lt;style&gt;&lt;/style&gt;&lt;script&gt;&lt;/script&gt;</code>，在大多数情况下，我们希望组件间定义的样式是相互隔离的，在 Weex 当中的确如此，组件天生隔离，可是在 Vue 当中，运行的载体还是浏览器，所有的样式类还是会通过 <style> 标签插入头部，影响全局，交叉污染</p>
+<h2 id="二、增加-Scoped-标识"><a href="#二、增加-Scoped-标识" class="headerlink" title="二、增加 Scoped 标识"></a>二、增加 Scoped 标识</h2><p>依然是 Vue-loader，通过为组件中的 style 标签增加一个 scoped 标识，Vue-loader 在编译的过程中会为组件每一个元素节点增加 scopeId 作为属性，同时为所有的样式类加上属性选择器 scopeId，从而达到隔离的效果，大概是下面的样子：</p>
+<p>`// 编译前</p>
+<p><template><br>    <div class='bg'></div><br></template></p>
+<style scoped>
+  .bg {
+      background: #000;
+      width: 100px;
+      height: 100px;
+  }
+</style>
+
+</p><p>// 编译后</p>
+<p><template><br>    <div class="bg" data-v-8e399fae=""></div><br></template></p>
+<style>
+  .bg[data-v-8e399fae] {
+      background: #000;
+      width: 100px;
+      height: 100px;
+  }
+</style>`
+
+每个组件有唯一的 scopeId，按理说，这样应该能够做到样式隔离了，实际上，**这种方式其实表现已经足够好了，除了以下这种情况~~**
+
+## 三、ScopeId 的继承 ##
+
+我们把上面的例子再完善下：
+`
+// 父组件
+<template>
+    <div>
+        <div class="bg"></div>
+        <sub></sub>
+    </div>
+</template>
+<script>
+    import Sub from './sub';
+    export default {
+        components: { Sub }
+    };
+</script>
+<style scoped>
+.bg {
+    background-color: #000;
+    width: 100px;
+    height: 100px;
+}
+</style>
+
+<p>// 子组件</p>
+<p><template><br>    <div class="bg"><br>    </div><br></template></p>
+<p><script><br>    export default {<br>    };<br></script></p>
+<style scoped>
+.bg {
+    width: 300px;
+    height: 300px;
+    margin-top: 5px;
+}
+</style>
+
+<p>`<br>由于我们使用了 scoped 标识进行样式隔离，子组件的 div 不应该有任何背景颜色，可是现实总在狠狠的打脸~~</p>
+<p>！[ ] (2954145-5ef559ae23a7aa98.png)</p>
+<p>不知道你的媚眼看到问题的所在了没：<br>子元素的<strong>根元素</strong>会继承父元素的 ScopeId！<br>子元素的<strong>根元素</strong>会继承父元素的 ScopeId！<br>子元素的<strong>根元素</strong>会继承父元素的 ScopeId！（说了三遍的话，肯定很重要）<br>由于子元素的<strong>根元素</strong>除了拥有自己的 ScopeId 属性，还继承了父元素的 ScopeId 属性，所以父元素的样式类 bg 对其依然有效</p>
+<h2 id="四、怎么破？"><a href="#四、怎么破？" class="headerlink" title="四、怎么破？"></a>四、怎么破？</h2><p>破解的方式也很简单，为每一个组件的根元素提供一个另类一点的样式名（如果有的话），例如就不要每个组件都命名为：wrap，根据业务名为：b1-wrap、b2-wrap 等</p>
+<blockquote>
+<p>组件中的非根元素，类名不管怎么命名，怎么重名，都是不会发生污染的，这个自己领悟~~</p>
+</blockquote>
+<h2 id="五、【更新】这不是bug"><a href="#五、【更新】这不是bug" class="headerlink" title="五、【更新】这不是bug"></a>五、【更新】这不是bug</h2><p>惭愧，文档查得不够详实，实际上官网已经有：<br><a href="https://vue-loader.vuejs.org/en/features/scoped-css.html" target="_blank" rel="noopener">Be careful with descendant selectors in recursive components! For a CSS rule with the selector .a .b, if the element that matches .a contains a recursive child component, then all .b in that child component will be matched by the rule.</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    <div>
+   
+    </div>
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/13/性能优化部分总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -554,138 +745,6 @@ ctx.fill();
 ...
 ctx.stroke();
 </code></pre><p>canvas的API确实很简单，常用的属性和方法加起来只有16个。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    <div>
-   
-    </div>
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/29/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="YangYi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杨溢的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/29/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-29T10:41:51+08:00">
-                2017-12-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
           
         
