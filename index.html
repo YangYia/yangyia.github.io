@@ -373,7 +373,7 @@
 </style>
 
 <p>`<br>由于我们使用了 scoped 标识进行样式隔离，子组件的 div 不应该有任何背景颜色，可是现实总在狠狠的打脸~~</p>
-<p>！[ ] (2954145-5ef559ae23a7aa98.png)</p>
+<p><img src="/2018/01/13/Vue-组件间的样式污染/2954145-5ef559ae23a7aa98.png" alt=" "></p>
 <p>不知道你的媚眼看到问题的所在了没：<br>子元素的<strong>根元素</strong>会继承父元素的 ScopeId！<br>子元素的<strong>根元素</strong>会继承父元素的 ScopeId！<br>子元素的<strong>根元素</strong>会继承父元素的 ScopeId！（说了三遍的话，肯定很重要）<br>由于子元素的<strong>根元素</strong>除了拥有自己的 ScopeId 属性，还继承了父元素的 ScopeId 属性，所以父元素的样式类 bg 对其依然有效</p>
 <h2 id="四、怎么破？"><a href="#四、怎么破？" class="headerlink" title="四、怎么破？"></a>四、怎么破？</h2><p>破解的方式也很简单，为每一个组件的根元素提供一个另类一点的样式名（如果有的话），例如就不要每个组件都命名为：wrap，根据业务名为：b1-wrap、b2-wrap 等</p>
 <blockquote>
