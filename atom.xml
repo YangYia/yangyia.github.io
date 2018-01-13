@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-01-13T11:56:00.715Z</updated>
+  <updated>2018-01-13T12:26:15.770Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue-loader 的巧妙玩法</title>
+    <link href="http://yoursite.com/2018/01/13/Vue-loader-%E7%9A%84%E5%B7%A7%E5%A6%99%E7%8E%A9%E6%B3%95/"/>
+    <id>http://yoursite.com/2018/01/13/Vue-loader-的巧妙玩法/</id>
+    <published>2018-01-13T11:58:17.106Z</published>
+    <updated>2018-01-13T12:26:15.770Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>声明：可以这么玩，不代表应该这么玩</p></blockquote><h2 id="一、Vue-loader-干了啥"><a href="#一、Vue-loader-干了啥" class="headerlink" title="一、Vue-loader 干了啥?"></a>一、Vue-loader 干了啥?</h2><p>Vue-loader 是一个 webpack 加载器，它可以把形如：</p><p><template><br>…<br></template></p><p><script><br>…<br></script></p><style>...</style><p>的 Vue 组件转化为 Js 模块，这其中最最值得关注的是，它生成了 <code>render function code</code>， 详解 render function code 中，已经对它进行了细致的介绍：</p><blockquote><p>render function code 是从模板编译而来（可以并且应该预编译）的组件核心渲染方法，在每一次组件的 Render 过程中，通过注入的数据执行可生成虚拟 Dom</p></blockquote><p>既然 Vue-loader 预编译生成了 <code>render function code</code>，那么我们就可以通过改造 Vue-loader 来改写 <code>render function code</code> 的生成结果，从而全局的影响组件的每一次渲染结果</p><h2 id="二、如何改造？"><a href="#二、如何改造？" class="headerlink" title="二、如何改造？"></a>二、如何改造？</h2><p><strong>找到目标代码</strong></p><p>Vue loader 并不普通，需要通过语法树分析的方式最终生成 <code>render function code</code> (并且不限于此)，如果通篇阅读如此复杂的代码可能会让你——沮丧。幸运的是，要完成改写<code>render function code</code> 的小目标，我们并不需要读得太多，找到生成结果那一小段代码，在返回之前改写即可。那么新的问题又来了，这小段代码又如何定位？</p><p>一是靠猜：打开 Vue-loader 的目录结构，见名知义，显然 <code>template-compiler</code> 模板编译的意思更为接近</p><p>二是搜索：在 <code>template-compiler</code> 目录中搜索 <code>render</code> , 有没有发现有一段代码很有嫌疑</p><pre><code>var code  if (compiled.errors &amp;&amp; compiled.errors.length) {this.emitError(  `\n  Error compiling template:\n${pad(html)}\n` +  compiled.errors.map(e =&gt; `  - ${e}`).join(&apos;\n&apos;) + &apos;\n&apos;)code = &apos;module.exports={render:function(){},staticRenderFns:[]}&apos;  } else {var bubleOptions = options.buble// 这段代码太可疑了code = transpile(&apos;module.exports={&apos; +  &apos;render:&apos; + toFunction(compiled.render) + &apos;,&apos; +  &apos;staticRenderFns: [&apos; + compiled.staticRenderFns.map(toFunction).join(&apos;,&apos;) + &apos;]&apos; +&apos;}&apos;, bubleOptions)// mark with stripped (this enables Vue to use correct runtime proxy detection)if (!isProduction &amp;&amp; (  !bubleOptions ||  !bubleOptions.transforms ||  bubleOptions.transforms.stripWith !== false)) {  code += `\nmodule.exports.render._withStripped = true`}  }</code></pre><p>三是调试确认：打印 <code>toFunction(compiled.render)</code>, 查看输出结果，如果跟 <code>render function code</code> 的表现一致的话，那就是它了</p><pre><code>with(this) {return _c(&apos;div&apos;, {    attrs: {        &quot;id&quot;: &quot;app&quot;    },    staticStyle: {      &quot;width&quot;: &quot;100px&quot;    },    style: styleObj},[_c(&apos;p&apos;, [_v(&quot;普通属性：&quot; + _s(message))]), _v(&quot; &quot;), _c(&apos;p&apos;, [_v(_s(msg()))]), _v(&quot; &quot;), _c(&apos;p&apos;, [_v(_s(ct))]), _v(&quot; &quot;), _c(&apos;input&apos;, {    directives: [{        name: &quot;model&quot;,        rawName: &quot;v-model&quot;,        value: (message),        expression: &quot;message&quot;    }],    domProps: {        &quot;value&quot;: (message)    },    on: {        &quot;input&quot;: function($event) {            if ($event.target.composing) return;            message = $event.target.value        }    }}), _v(&quot; &quot;), _l((items),function(item) {    return _c(&apos;div&apos;, [_v(&quot;\n\t\t  &quot; + _s(item.text) + &quot;\n\t   &quot;)])}), _v(&quot; &quot;), _c(&apos;button&apos;, {    on: {        &quot;click&quot;: bindClick    }},[_v(&quot;点我出奇迹抓同伟&quot;)])], 2)}</code></pre><p><strong>如何改造？</strong></p><p>假如我们想把所有组件的所有静态样式（staticStyle）的像素值乘二（虽然有点搞破坏），那么我们需要对上述 <code>toFunction(compiled.render)</code>进行正则替换</p><pre><code>var renderCode = toFunction(compiled.render)renderCode = renderCode.replace(/(staticStyle:)(\s*{)([^}]*)(})/g, function (m, n1, n2, n3, n4) {n3 = n3.replace(/(&quot;.*&quot;)(\s*:\s*&quot;)(\d+px)(&quot;)/g, function (m, n31, n32, n33, n34) {  return n31 + n32 + parseInt(n33)*2 + &apos;px&apos; + n34})return n1 + n2 + n3 + n4  })</code></pre><p>如果是改造动态样式（style），由于在 <code>render function code</code> 中，动态 style 以变量的形式出现，我们不能直接替换模板，那么我们可以通过传入一个方法，在运行时执行转换。不要企图写一个普通的方法，通过方法名的引用在<code>render function code</code> 中执行，因为 <code>render function code</code> 执行时的作用域，不是在<code>Vue-loader</code> 阶段可以确认的，所以我们需要写一个立即执行函数：</p><pre><code>var convertCode = &quot;(function(styleObj){styleObj = (...此处省略N行代码)})(##style##)&quot;</code></pre><p>立即执行函数的入参用 <code>##style##</code>占位，替换的过程中用具体的变量代替，上述 <code>render function code</code> 替换结果为：</p><pre><code>with(this) {return _c(&apos;div&apos;, {    attrs: {        &quot;id&quot;: &quot;app&quot;    },    staticStyle: {      &quot;width&quot;: &quot;100px&quot;    },    // 重点在这里 在这里    style: (function(styleObj){styleObj = (...此处省略N行代码)})(styleObj)},...)}</code></pre><h2 id="三、有何使用场景？"><a href="#三、有何使用场景？" class="headerlink" title="三、有何使用场景？"></a>三、有何使用场景？</h2><p>例如，当你一开始使用了 px 作为布局单位，却需要改造为 rem 布局单位的时候（业务代码很多很繁杂，不方便一个个去改，并且由于动态样式的存在，难以全局替换）</p><p>对于插入立即执行函数去处理动态变量的方式，每一次 <code>Re-render</code> 都会执行一遍转换函数，显然，这对渲染性能有影响</p><p>所以，虽然可以这么玩，但是不代表应该这么玩，还需三思而行</p><p>其它的使用场景暂时也还没想到，即便如此，这种瞎折腾也不是没有意义的，没准在还无法预见的场景，这是一种绝佳的解决方案呢？如果你刚好遇到了，也同步给我吧~~</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;声明：可以这么玩，不代表应该这么玩&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;一、Vue-loader-干了啥&quot;&gt;&lt;a href=&quot;#一、Vue-loader-干了啥&quot; class=&quot;headerlink&quot; title=&quot;一、Vue-lo
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>如何阅读框架源代码</title>
