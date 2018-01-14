@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="杨溢的博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="本人只是前端大行业中最渺小的一只，曾经一度处于阴霾迷失方向，现总结北京一些公司的前端题分享给或许也同样迷茫的你(持续更新)，希望能帮助你们也是我自己慢慢拨开迷雾，这次更新的面试题是公司原题主要考察react框架，其实面试题答得好只是能通过初选，所以不要满足于面试题，一起加油。  react官网：https://reactjs.org/ 学习react我个人是建议看一遍官网的api的，会有一些感悟。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="爬虫溢前端面试题及个人总结(一)">
+<meta property="og:url" content="http://yoursite.com/2018/01/14/爬虫溢前端面试题及个人总结-一/index.html">
+<meta property="og:site_name" content="杨溢的博客">
+<meta property="og:description" content="本人只是前端大行业中最渺小的一只，曾经一度处于阴霾迷失方向，现总结北京一些公司的前端题分享给或许也同样迷茫的你(持续更新)，希望能帮助你们也是我自己慢慢拨开迷雾，这次更新的面试题是公司原题主要考察react框架，其实面试题答得好只是能通过初选，所以不要满足于面试题，一起加油。  react官网：https://reactjs.org/ 学习react我个人是建议看一遍官网的api的，会有一些感悟。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/01/14/爬虫溢前端面试题及个人总结-一/986868-20161126171445659-1089616270.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/14/爬虫溢前端面试题及个人总结-一/986868-20161126171601409-1743776738.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/14/爬虫溢前端面试题及个人总结-一/986868-20161126173731034-2104809170.gif">
+<meta property="og:image" content="http://yoursite.com/2018/01/14/爬虫溢前端面试题及个人总结-一/pic4.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/14/爬虫溢前端面试题及个人总结-一/pic1.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/14/爬虫溢前端面试题及个人总结-一/pic2.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/14/爬虫溢前端面试题及个人总结-一/pic3.png">
+<meta property="og:updated_time" content="2018-01-14T07:14:20.823Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="爬虫溢前端面试题及个人总结(一)">
+<meta name="twitter:description" content="本人只是前端大行业中最渺小的一只，曾经一度处于阴霾迷失方向，现总结北京一些公司的前端题分享给或许也同样迷茫的你(持续更新)，希望能帮助你们也是我自己慢慢拨开迷雾，这次更新的面试题是公司原题主要考察react框架，其实面试题答得好只是能通过初选，所以不要满足于面试题，一起加油。  react官网：https://reactjs.org/ 学习react我个人是建议看一遍官网的api的，会有一些感悟。">
+<meta name="twitter:image" content="http://yoursite.com/2018/01/14/爬虫溢前端面试题及个人总结-一/986868-20161126171445659-1089616270.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/14/爬虫溢前端面试题及个人总结-一/"/>
+
+
+
+
+
+  <title>爬虫溢前端面试题及个人总结(一) | 杨溢的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/YangYia"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨溢的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">努力向上爬的小人物</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/14/爬虫溢前端面试题及个人总结-一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YangYi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨溢的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">爬虫溢前端面试题及个人总结(一)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-14T13:46:18+08:00">
+                2018-01-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本人只是前端大行业中最渺小的一只，曾经一度处于阴霾迷失方向，现总结北京一些公司的前端题分享给或许也同样迷茫的你(持续更新)，希望能帮助你们也是我自己慢慢拨开迷雾，这次更新的面试题是公司原题主要考察react框架，其实面试题答得好只是能通过初选，所以不要满足于面试题，一起加油。</p>
+<blockquote>
+<p>react官网：<a href="https://reactjs.org/" target="_blank" rel="noopener">https://reactjs.org/</a> 学习react我个人是建议看一遍官网的api的，会有一些感悟。</p>
+</blockquote>
+<h2 id="react最基础也是必须记住的就是它的生命周期-三阶段10个-："><a href="#react最基础也是必须记住的就是它的生命周期-三阶段10个-：" class="headerlink" title="react最基础也是必须记住的就是它的生命周期(三阶段10个)："></a>react最基础也是必须记住的就是它的生命周期(三阶段10个)：</h2><p>一、上树阶段（Mounting阶段）</p>
+<table>
+<thead>
+<tr>
+<th>生命周期</th>
+<th style="text-align:center">做了什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>constructor()</td>
+<td style="text-align:center">构造函数，写state什么的 </td>
+</tr>
+<tr>
+<td>componentWillMount()</td>
+<td style="text-align:center">将要上树，这里发出Ajax请求  </td>
+</tr>
+<tr>
+<td>render()</td>
+<td style="text-align:center">呈递视图 </td>
+</tr>
+<tr>
+<td>componentDidMount()</td>
+<td style="text-align:center">上树之后，可以操作DOM </td>
+</tr>
+</tbody>
+</table>
+<p>本阶段需要注意的是，在<br><code>componentDidMount()</code>生命周期函数中，就能操作DOM了，<strong>DOM就已经上树</strong>了；本阶段的4个函数都没有参数。<br>二、更新阶段（Updating阶段）<br> props的改变或者state的改变将触发本阶段。</p>
+<table>
+<thead>
+<tr>
+<th>生命周期</th>
+<th style="text-align:center">做了什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>componentWillReceiveProps(nextProps)</td>
+<td style="text-align:center">当父亲传给组件的prop改变的时候发生。在这个函数中，nextProps参数表示新的父亲传入的props对象</td>
+</tr>
+<tr>
+<td>shouldComponentUpdate(nextProps, nextState)    门神</td>
+<td style="text-align:center">当父亲传入的props改变或者自己state改变发生。return true此时才会继续执行后面的声明周期；return false不执行后面的生命周期了。如果没有写门神函数，默认return true。 </td>
+</tr>
+<tr>
+<td>render()</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>componentDidUpdate(prevProps , prevState)</td>
+<td style="text-align:center">更新之后做的事情</td>
+</tr>
+</tbody>
+</table>
+<p>三、下树阶段（Unmounting阶段）</p>
+<table>
+<thead>
+<tr>
+<th>生命周期</th>
+<th style="text-align:center">做了什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>componentWillUnmount()</td>
+<td style="text-align:center">将要下树</td>
+</tr>
+</tbody>
+</table>
+<h2 id="React中state与props介绍与比较"><a href="#React中state与props介绍与比较" class="headerlink" title="React中state与props介绍与比较"></a>React中state与props介绍与比较</h2><ul>
+<li>state<br>1.state的作用<br>　　state是React中组件的一个对象.React把用户界面当做是状态机,想象它有不同的状态然后渲染这些状态,可以轻松让用户界面与数据保持一致.<br>　　React中,更新组件的state,会导致重新渲染用户界面(不要操作DOM).简单来说,就是用户界面会随着state变化而变化.<br>2.state工作原理<br>　　常用的通知React数据变化的方法是调用setState(data,callback).这个方法会合并data到this.state,并重新渲染组件.渲染完成后,调用可选的<br>　　callback回调.大部分情况不需要提供callback,因为React会负责吧界面更新到最新状态.<br>3.那些组件应该有state?<br>　　大部分组件的工作应该是从props里取数据并渲染出来.但是,有时需要对用户输入,服务器请求或者时间变化等作出响应,这时才需要state.<br>　　组件应该尽可能的无状态化,这样能隔离state,把它放到最合理的地方(Redux做的就是这个事情?),也能减少冗余并易于解释程序运作过程.<br>　　常用的模式就是创建多个只负责渲染数据的无状态(stateless)组件,在他们的上层创建一个有状态(stateful)组件并把它的状态通过props<br>　　传给子级.有状态的组件封装了所有的用户交互逻辑,而这些无状态组件只负责声明式地渲染数据.<br>4.哪些应该作为state?<br>　　state应该包括那些可能被组件的事件处理器改变并触发用户界面更新的数据.这中数据一般很小且能被JSON序列化.当创建一个状态化的组件<br>　　的时候,应该保持数据的精简,然后存入this.state.在render()中在根据state来计算需要的其他数据.因为如果在state里添加冗余数据或计算<br>　　所得数据,经常需要手动保持数据同步.<br>5.那些不应该作为state?<br>　　this.state应该仅包括能表示用户界面状态所需要的最少数据.因此,不应该包括:<br>　　计算所得数据:<br>　　React组件:在render()里使用props和state来创建它.<br>　　基于props的重复数据:尽可能保持用props来做作为唯一的数据来源.把props保存到state中的有效的场景是需要知道它以前的值得时候,<br>　　因为未来的props可能会变化.</li>
+<li>props<br>1.props的作用<br>　　组件中的props是一种父级向子级传递数据的方式.<br>2.复合组件</li>
+</ul>
+<h2 id="react销毁阶段"><a href="#react销毁阶段" class="headerlink" title="react销毁阶段"></a>react销毁阶段</h2><p>1.销毁阶段可以使用的函数：<br>componentWillUnmount:在删除组件之前进行清理操作，比如计时器和事件监听器。因为这些函数都是开发者手动加上去的，react不知道，必须进行手动清理。</p>
+<p>2.实例<br>第一种方式：在render中，把之前已有的页面去掉，反映到页面中，就是把它删掉。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;测试触发顺序，不输入不会触发五个函数，只会触发render&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.bootcss.com/react/0.13.2/react.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.bootcss.com/react/0.13.2/JSXTransformer.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/jsx&quot;&gt;
+    var style={
+       color:&quot;red&quot;,
+       border:&quot;1px solid #f99&quot;,
+       width:&quot;200px&quot;,
+       height:&quot;50px&quot;
+    };
+    var HelloWorld= React.createClass({
+        render:function(){
+            console.log(&quot;render,4&quot;);
+            return &lt;p&gt;Hello,{this.props.name ? this.props.name : &quot;World&quot;}&lt;/p&gt;;
+        },
+        componentWillUnmount:function(){
+            console.log(&quot;BOOM&quot;);
+        },
+    });
+    var HelloUniverse=React.createClass({
+        getInitialState:function(){
+            return {name:&quot;&quot;};
+        },
+        handleChange:function(event){
+            //用来响应input的输入事件
+            this.setState({name:event.target.value});
+        },
+        render:function(){
+            if(this.state.name == &quot;123&quot;){
+               return &lt;div&gt;123&lt;/div&gt;
+            }
+            return &lt;div&gt;
+            &lt;HelloWorld name={this.state.name
+                //这里引用了HelloWorld的组件，所以HelloUniverse是他的子组件
+            }&gt;&lt;/HelloWorld&gt;
+            &lt;br /&gt;
+            &lt;input type=&quot;text&quot; onChange={this.handleChange} /&gt;  
+            &lt;/div&gt;
+        },
+    });
+    React.render(&lt;div style={style}&gt;&lt;HelloUniverse&gt;&lt;/HelloUniverse&gt;&lt;/div&gt;,document.body)
+    // 写为React.render(&lt;div style={style}&gt;&lt;HelloWord&gt;&lt;/HelloWorld&gt;&lt;/div&gt;,document.body)看看效果
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>输入别的不会触发</p>
+<p><img src="/2018/01/14/爬虫溢前端面试题及个人总结-一/986868-20161126171445659-1089616270.png" alt=" "></p>
+<p>当输入123的时候</p>
+<p><img src="/2018/01/14/爬虫溢前端面试题及个人总结-一/986868-20161126171601409-1743776738.png" alt=" "></p>
+<p>第二种：就是使用react提供的一个函数unmountComponentAtNode</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.bootcss.com/react/0.13.2/react.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.bootcss.com/react/0.13.2/JSXTransformer.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/jsx&quot;&gt;
+    var style={
+       color:&quot;red&quot;,
+       border:&quot;1px solid #f99&quot;,
+       width:&quot;200px&quot;,
+       height:&quot;50px&quot;
+    };
+    var HelloWorld= React.createClass({
+        render:function(){
+            console.log(&quot;render,4&quot;);
+            return &lt;p&gt;Hello,{this.props.name ? this.props.name : &quot;World&quot;}&lt;/p&gt;;
+        },
+        componentWillUnmount:function(){
+            console.log(&quot;BOOM&quot;);
+        },
+    });
+    var HelloUniverse=React.createClass({
+        getInitialState:function(){
+            return {name:&quot;&quot;};
+        },
+        handleChange:function(event){
+            //判断的是input里面的值，如果是123，我们就使用unmountComponentAtNode来删除
+            //使用unmountComponentAtNode时，传入的必须是装载时候的节点。
+
+
+            if(event.target.value == &quot;123&quot;){
+              React.unmountComponentAtNode(document.getElementsByTagName(&quot;body&quot;)[0]);
+              return;
+            }
+            this.setState({name:event.target.value});
+        },
+        render:function(){
+            return &lt;div&gt;
+            &lt;HelloWorld name={this.state.name
+                //这里引用了HelloWorld的组件，所以HelloUniverse是他的子组件
+            }&gt;&lt;/HelloWorld&gt;
+            &lt;br /&gt;
+            &lt;input type=&quot;text&quot; onChange={this.handleChange} /&gt;  
+            &lt;/div&gt;
+        },
+    });
+    React.render(&lt;div style={style}&gt;&lt;HelloUniverse&gt;&lt;/HelloUniverse&gt;&lt;/div&gt;,document.body)
+    // 写为React.render(&lt;div style={style}&gt;&lt;HelloWord&gt;&lt;/HelloWorld&gt;&lt;/div&gt;,document.body)看看效果
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p><img src="/2018/01/14/爬虫溢前端面试题及个人总结-一/986868-20161126173731034-2104809170.gif" alt=" "></p>
+<h2 id="react-router配置"><a href="#react-router配置" class="headerlink" title="react-router配置"></a>react-router配置</h2><p>路由库React-Router。它是官方维护的，事实上也是唯一可选的路由库。它通过管理 URL，实现组件的切换和状态的变化，开发复杂的应用几乎肯定会用到。<br>使用详情请参考<a href="http://www.ruanyifeng.com/blog/2016/05/react_router.html?utm_source=tool.lu" target="_blank" rel="noopener">阮一峰的博客</a>。</p>
+<h2 id="react的render中，return里面是不是只能有一个最外层DIV"><a href="#react的render中，return里面是不是只能有一个最外层DIV" class="headerlink" title="react的render中，return里面是不是只能有一个最外层DIV"></a>react的render中，return里面是不是只能有一个最外层DIV</h2><p>最外层只能一个组件，但不一定是div。<br>可以是一个<code>react Component</code>，如<code>&lt;A&gt;&lt;/A&gt;</code>;也可以是html标签，如<code>&lt;div&gt;&lt;/div&#39;/&#39;&lt;form&gt;&lt;/form&gt;</code>;如果返回的是多个平级的<code>react Component</code>，需要用html标签包裹起来，如<code>&#39;&lt;div&gt;&lt;A/&gt;&lt;B/&gt;&lt;/div&gt;&#39;</code>。</p>
+<h2 id="render内的html-class名"><a href="#render内的html-class名" class="headerlink" title="render内的html class名"></a>render内的html class名</h2><p>react使用JSX语法，JSX语法最终是要被转换为纯Javascript的，所以要和在Javascript DOM中一样，用<code>className</code>和<code>htmlFor</code>。</p>
+<h2 id="react行内样式"><a href="#react行内样式" class="headerlink" title="react行内样式"></a>react行内样式</h2><p>react的行内样式本质上是一个对象,比如官方文档的这个</p>
+<pre><code>var divStyle = {
+  color: &apos;white&apos;,
+  backgroundImage: &apos;url(&apos; + imgUrl + &apos;)&apos;,
+  WebkitTransition: &apos;all&apos;, // 注意这里的首字母&apos;W&apos;是大写
+  msTransition: &apos;all&apos; // &apos;ms&apos;是唯一一个首字母需要小写的浏览器前缀
+};
+
+React.render(&lt;div style={divStyle}&gt;Hello World!&lt;/div&gt;, mountNode);
+</code></pre><p><img src="/2018/01/14/爬虫溢前端面试题及个人总结-一/pic4.png" alt=" "></p>
+<h2 id="如何在React中使用数据动态生成DOM标签"><a href="#如何在React中使用数据动态生成DOM标签" class="headerlink" title="如何在React中使用数据动态生成DOM标签"></a>如何在React中使用数据动态生成DOM标签</h2><p>我们的数据是从真实的DOM中获取来 通过事件 构建一个数组  每次点击或其他事件来把数据push到数组中  这段的代码中最重要的是我们要调用父组件中 修改数据的方法 这样数据就传递过去了 我们就可以使用上述的方法来动态生成 DOM元素了 </p>
+<p>参考详情请见：<a href="http://blog.csdn.net/front_endrussell/article/details/52691943" target="_blank" rel="noopener">点击此处</a></p>
+<h2 id="关于Virtual-DOM"><a href="#关于Virtual-DOM" class="headerlink" title="关于Virtual DOM"></a>关于Virtual DOM</h2><p>React采用了<code>Virtual DOM</code>虚拟DOM和DIFF算法，在内存中快速比较<code>setState</code>变化前后的差异，做最小量更新！</p>
+<p>比如下图，我们点击按钮之后，state影响界面从左侧的形式变为了右侧的形式：</p>
+<p><img src="/2018/01/14/爬虫溢前端面试题及个人总结-一/pic1.png" alt=" "></p>
+<p>方案1：删除4个li，插入5个li；</p>
+<p>方案2：增加1个li，改变5个li的innerHTML；</p>
+<p>很明显，方案2更加节约内存，效率高。</p>
+<ul>
+<li>React中有DIFF算法，就是可以快速比较两个DOM结构的最小化差异。</li>
+<li>React会将DOM结构编码（类似于数据结构中的树的结构），存储在内存中，称为Virtual DOM，虚拟DOM。</li>
+</ul>
+<p><img src="/2018/01/14/爬虫溢前端面试题及个人总结-一/pic2.png" alt=" "></p>
+<p>当组件有组件套组件的情况下，Virtual DOM还会自动计算子孙组件的最小化差异：</p>
+<p><img src="/2018/01/14/爬虫溢前端面试题及个人总结-一/pic3.png" alt=" "></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    <div>
+   
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+   
+    </div>
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/13/前端面试不可忽视的安全问题/" rel="next" title="前端面试不可忽视的安全问题">
+                <i class="fa fa-chevron-left"></i> 前端面试不可忽视的安全问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">YangYi</p>
+              <p class="site-description motion-element" itemprop="description">技术和生活，我融为一体。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#react最基础也是必须记住的就是它的生命周期-三阶段10个-："><span class="nav-number">1.</span> <span class="nav-text">react最基础也是必须记住的就是它的生命周期(三阶段10个)：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React中state与props介绍与比较"><span class="nav-number">2.</span> <span class="nav-text">React中state与props介绍与比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react销毁阶段"><span class="nav-number">3.</span> <span class="nav-text">react销毁阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-router配置"><span class="nav-number">4.</span> <span class="nav-text">react-router配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react的render中，return里面是不是只能有一个最外层DIV"><span class="nav-number">5.</span> <span class="nav-text">react的render中，return里面是不是只能有一个最外层DIV</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#render内的html-class名"><span class="nav-number">6.</span> <span class="nav-text">render内的html class名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react行内样式"><span class="nav-number">7.</span> <span class="nav-text">react行内样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何在React中使用数据动态生成DOM标签"><span class="nav-number">8.</span> <span class="nav-text">如何在React中使用数据动态生成DOM标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于Virtual-DOM"><span class="nav-number">9.</span> <span class="nav-text">关于Virtual DOM</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YangYi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
