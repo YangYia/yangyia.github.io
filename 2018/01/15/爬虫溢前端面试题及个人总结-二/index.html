@@ -80,6 +80,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="杨溢的博客" type="application/atom+xml" />
 
@@ -88,17 +90,17 @@
 
 
 
-<meta name="description" content="Canvas画布是HTML5的特性，可以制作动画、游戏；手册文档：https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial 放置一个canvas标签&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt;     &amp;lt;meta chars">
+<meta name="description" content="接上一篇。(问题的答案全是个人理解，有可能错误，如发现错误问题，请发邮件给我，我的邮箱在侧边栏有，谢谢！)  function内路由跳转Angular、vue、react都可实现，以下依次是实现方法。 Angular： &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt;   &amp;lt;meta charset=&amp;q">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Canvas基础知识">
-<meta property="og:url" content="http://yoursite.com/2017/12/29/canvas基础知识/index.html">
+<meta property="og:title" content="爬虫溢前端面试题及个人总结(二)">
+<meta property="og:url" content="http://yoursite.com/2018/01/15/爬虫溢前端面试题及个人总结-二/index.html">
 <meta property="og:site_name" content="杨溢的博客">
-<meta property="og:description" content="Canvas画布是HTML5的特性，可以制作动画、游戏；手册文档：https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial 放置一个canvas标签&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt;     &amp;lt;meta chars">
+<meta property="og:description" content="接上一篇。(问题的答案全是个人理解，有可能错误，如发现错误问题，请发邮件给我，我的邮箱在侧边栏有，谢谢！)  function内路由跳转Angular、vue、react都可实现，以下依次是实现方法。 Angular： &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt;   &amp;lt;meta charset=&amp;q">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-29T06:28:47.433Z">
+<meta property="og:updated_time" content="2018-01-15T09:55:12.510Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Canvas基础知识">
-<meta name="twitter:description" content="Canvas画布是HTML5的特性，可以制作动画、游戏；手册文档：https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial 放置一个canvas标签&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt;     &amp;lt;meta chars">
+<meta name="twitter:title" content="爬虫溢前端面试题及个人总结(二)">
+<meta name="twitter:description" content="接上一篇。(问题的答案全是个人理解，有可能错误，如发现错误问题，请发邮件给我，我的邮箱在侧边栏有，谢谢！)  function内路由跳转Angular、vue、react都可实现，以下依次是实现方法。 Angular： &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt;   &amp;lt;meta charset=&amp;q">
 
 
 
@@ -128,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/29/canvas基础知识/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/15/爬虫溢前端面试题及个人总结-二/"/>
 
 
 
 
 
-  <title>Canvas基础知识 | 杨溢的博客</title>
+  <title>爬虫溢前端面试题及个人总结(二) | 杨溢的博客</title>
   
 
 
@@ -241,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/29/canvas基础知识/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/15/爬虫溢前端面试题及个人总结-二/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YangYi">
@@ -258,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Canvas基础知识</h1>
+          <h1 class="post-title" itemprop="name headline">爬虫溢前端面试题及个人总结(二)</h1>
         
 
         <div class="post-meta">
@@ -270,8 +272,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-29T13:39:33+08:00">
-                2017-12-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-15T14:06:29+08:00">
+                2018-01-15
               </time>
             
 
@@ -308,58 +310,113 @@
       
 
       
-        <p>Canvas画布是HTML5的特性，可以制作动画、游戏；<br>手册文档：<a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial</a></p>
-<h2 id="放置一个canvas标签"><a href="#放置一个canvas标签" class="headerlink" title="放置一个canvas标签"></a>放置一个canvas标签</h2><pre><code>&lt;!DOCTYPE html&gt;
+        <blockquote>
+<p>接上一篇。(问题的答案全是个人理解，有可能错误，如发现错误问题，请发邮件给我，我的邮箱在侧边栏有，谢谢！)</p>
+</blockquote>
+<h2 id="function内路由跳转"><a href="#function内路由跳转" class="headerlink" title="function内路由跳转"></a>function内路由跳转</h2><p>Angular、vue、react都可实现，以下依次是实现方法。</p>
+<p><strong>Angular：</strong></p>
+<pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;Document&lt;/title&gt;
-    &lt;style type=&quot;text/css&quot;&gt;
-        canvas{
-            border:1px solid #333;
-        }
-    &lt;/style&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;Title&lt;/title&gt;
+  &lt;script src=&quot;angular1.4.6.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;angular-route.js&quot;&gt;&lt;/script&gt;
 &lt;/head&gt;
-&lt;body&gt;
-    &lt;canvas id=&quot;mycanvas&quot; width=&quot;600&quot; height=&quot;400&quot;&gt;&lt;/canvas&gt;
+&lt;body ng-app=&quot;MyApp&quot; &gt;
+&lt;a href=&quot;#/&quot; rel=&quot;external nofollow&quot; &gt;CHINA&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&quot;#/1&quot; rel=&quot;external nofollow&quot; &gt;CHINA1&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&quot;#/2&quot; rel=&quot;external nofollow&quot; &gt;CHINA2&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&quot;#/3&quot; rel=&quot;external nofollow&quot; &gt;CHINA3&lt;/a&gt;&lt;br/&gt;
+&lt;div ng-view&gt;
+11111
+&lt;/div&gt;
+&lt;script&gt;
+  var app = angular.module(&quot;MyApp&quot;, [&quot;ngRoute&quot;]);
+  app.config(function ( $routeProvider) {
+$routeProvider
+  .when(&quot;/&quot;, {template: &quot;&lt;h1&gt;123&lt;/h1&gt;&quot;})
+  .when(&quot;/1&quot;, {template: &quot;&lt;h1&gt;111&lt;/h1&gt;&quot;})
+  .when(&quot;/2&quot;, {template: &quot;&lt;h1&gt;222&lt;/h1&gt;&quot;})
+  .when(&quot;/3&quot;, {template: &quot;&lt;h1&gt;333&lt;/h1&gt;&quot;});
+  });
+&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>注意，千万不要用css来设置width、height，应该使用canvas标签的属性。</p>
-<h2 id="js部分"><a href="#js部分" class="headerlink" title="js部分"></a>js部分</h2><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-    //得到节点
-    var mycanvas = document.getElementById(&quot;mycanvas&quot;);
-    //得到上下文
-    var ctx = mycanvas.getContext(&quot;2d&quot;);
+</code></pre><p><strong>vue：</strong></p>
+<p>比如html中这样写：</p>
+<pre><code>&lt;span @click=&quot;clickFn&quot;&gt;点我&lt;/span&gt;
+</code></pre><p>js中这样写：</p>
+<pre><code>methods:{
+clickFn:function(){
+    this.$router.go(&apos;/login&apos;);//其中login是你定义的一个路由模块
+}
+</code></pre><p><strong>React：</strong></p>
+<pre><code>import { browserHistory } from &apos;react-router&apos;  //引入路由函数
 
-    //绘制一个矩形
-    ctx.fillStyle = &quot;blue&quot;;
-    ctx.fillRect(100 , 100 , 180 , 60);
+browserHistory.push(&apos;/some/path&apos;)   //js方式跳转
+</code></pre><p>或者使用 hashHistory 代替 browserHistory，看个人爱好。</p>
+<h2 id="关于react路由带-号问题"><a href="#关于react路由带-号问题" class="headerlink" title="关于react路由带#号问题"></a>关于react路由带#号问题</h2><p>Router组件有一个参数history，它的值hashHistory表示，路由的切换由URL的hash变化决定，即URL的#部分发生变化。举例来说，用户访问<a href="http://www.example.com/，实际会看到的是http://www.example.com/#/" target="_blank" rel="noopener">http://www.example.com/，实际会看到的是http://www.example.com/#/</a></p>
+<p>详情请见：<a href="http://www.ruanyifeng.com/blog/2016/05/react_router.html" target="_blank" rel="noopener">阮一峰的博客</a></p>
+<h2 id="react组件参数验证"><a href="#react组件参数验证" class="headerlink" title="react组件参数验证"></a>react组件参数验证</h2><p><code>propTypes</code>是React提供的一种验证机制，该对象中定义了一系列的验证方法，可对<code>props</code>进行验证。组件初始化时，如果传递的props属性和<code>propTypes</code>不匹配，则会打印一个<code>console.warn</code>日志。</p>
+<p>详情请见：<a href="https://itbilu.com/javascript/react/4JIk-Q7Yl.html#propTypes" target="_blank" rel="noopener">验证对象propTypes</a></p>
+<h2 id="react取input值"><a href="#react取input值" class="headerlink" title="react取input值"></a>react取input值</h2><p>给input加入一个ref属性，<code>&lt;input ref=&quot;Dom&quot; value=&quot;111&quot;／&gt;</code> ,通过<code>this.ref.dom</code>就能获取到这个input，<code>this.ref.Dom.value</code>就能获取input中的值。</p>
+<p>或者：</p>
+<p><strong>无约束组件</strong>。直接给定组件一个defaultValue值</p>
+<pre><code>&lt;input type=&quot;text&quot; defaultValue=&quot;Hello World!&quot; ref=&quot;helloTo&quot; /&gt;
+//通过ref获取input的值
+var inputValue = this.ref.hello.getDOMNode().value;
+</code></pre><p><strong>约束组件</strong></p>
+<pre><code>&lt;input type=&quot;text&quot; defaultValue={this.state.hello} /&gt;
+//{}来获取input的值, var inputValue = this.state.hello;
+</code></pre><h2 id="Promise对象"><a href="#Promise对象" class="headerlink" title="Promise对象"></a>Promise对象</h2><p>Promise对象标准语法：</p>
+<pre><code>var p = new Promise(function (resolve, reject) {
+   setTimeout(function () {
+   var ra = Math.random()
+   ra &lt; 0.5 ? resolve() : reject()  
+}, 1000)
+})
 
-    //绘制一个圆形
-    ctx.fillStyle = &quot;gold&quot;;
-    ctx.beginPath();
-    ctx.arc(390 , 190 , 110 , 0 , Math.PI * 2 , true);
-    ctx.fill();
-    ctx.strokeStyle = &quot;red&quot;;
-    ctx.lineWidth = 10;
-    ctx.stroke();
-    ctx.closePath();
-&lt;/script&gt;
-</code></pre><h2 id="所有的属性语句，都是进行一些配置"><a href="#所有的属性语句，都是进行一些配置" class="headerlink" title="所有的属性语句，都是进行一些配置"></a>所有的属性语句，都是进行一些配置</h2><pre><code>ctx.fillStyle = &quot;blue&quot;;
-...
-ctx.fillStyle = &quot;gold&quot;;
-....
-ctx.strokeStyle = &quot;red&quot;;
-....
-ctx.lineWidth = 10;
-</code></pre><h2 id="所有的方法语句，都是在执行“动令”"><a href="#所有的方法语句，都是在执行“动令”" class="headerlink" title="所有的方法语句，都是在执行“动令”"></a>所有的方法语句，都是在执行“动令”</h2><pre><code>ctx.fillRect(100 , 100 , 180 , 60);
-....
-ctx.arc(390 , 190 , 110 , 0 , Math.PI * 2 , true);
-........
-ctx.fill();
-...
-ctx.stroke();
-</code></pre><p>canvas的API确实很简单，常用的属性和方法加起来只有16个。</p>
+p.then(function () {
+  console.log(&apos;成功&apos;)
+}, function () {
+  console.log(&apos;失败&apos;)
+})
+</code></pre><p>new Promise() 构造函数建立一个Promise对象</p>
+<p>其最常见的就是then方法，then方法可接收3个函数，一般传递2个，最常见传递1个。</p>
+<p>分别为 成功回调、失败回调、完成回调</p>
+<p>react中应用了Promise对象，很好解决了不优雅的金字塔结构代码。<br>下面是常看到用ajax请求回来数据会有这样一段代码。</p>
+<pre><code>componentDidMount() {
+this.props.promise.then(
+  value =&gt; this.setState({loading: false, data: value}),
+  error =&gt; this.setState({loading: false, error: error}));
+  }
+</code></pre><p>value 是代表 promise 完成后的 resolve 值，需要通过 value 传递。</p>
+<p>详情了解promise对象：<a href="https://segmentfault.com/a/1190000007685095" target="_blank" rel="noopener">点击此处</a></p>
+<h2 id="babel是干什么的"><a href="#babel是干什么的" class="headerlink" title="babel是干什么的"></a>babel是干什么的</h2><p>Babel并非React的一部分，实际上，Babel的主要用途并非一个JSX语句转换器。Babel主要是一个JavaScript转换器，<strong>它可以转换各种ES*代码为浏览器可识别的ES代码</strong>。就目前来说，Babel主要会转换ES6和ES7语句为ES5语句，转换JSX看起来倒像是其的一个附加功能。</p>
+<p>有了Babel，我们可以放心的在React中使用最新的ES语句了。</p>
+<h2 id="eslint"><a href="#eslint" class="headerlink" title="eslint"></a>eslint</h2><p>ESLint 是用来检查我们写的 JavaScript 代码是否满足指定规则的静态代码检查工具。或者说ESLint是一个用来识别 ECMAScript 并且按照规则给出报告的代码检测工具，使用它可以避免低级错误和统一代码的风格。</p>
+<p>详细了解：<a href="https://eslint.org/" target="_blank" rel="noopener">ESlint官网</a></p>
+<h2 id="代理接口"><a href="#代理接口" class="headerlink" title="代理接口"></a>代理接口</h2><p>主要通过代理服务器站点实现，代理网络用户获取信息，主要提高访问的速度。</p>
+<h2 id="什么是Reducer"><a href="#什么是Reducer" class="headerlink" title="什么是Reducer"></a>什么是Reducer</h2><p>下面这个函数就是reducer，这里就是所谓的“predictable”可以被预测的含义。所有对state的操作，都要罗列出来。</p>
+<p>reducer函数必须符合的形态：接受之前的state和action，返回新的state：</p>
+<pre><code>(previousState,action) =&gt; newState
+</code></pre><p>reducer：</p>
+<pre><code>function counter(state = {&quot;v&quot; : 100} , action){
+if(action.type == &quot;ZENGJIA&quot;){
+    return {&quot;v&quot; : state.v + 1};
+}else if(action.type == &quot;JIANSHAO&quot;){
+    return {&quot;v&quot; : state.v - 1};
+}
+return state;
+}
+</code></pre><p>在reducer中是绝对不能更改state的，而是应该返回新的state。</p>
+<h2 id="发送action"><a href="#发送action" class="headerlink" title="发送action"></a>发送action</h2><p>按钮监听不是直接改变state的值，而是调用store的dispatch方法发送命令给仓库，比对reducer中的if语句，执行相应的改变。action必须有一个type属性，这个type属性表示这个action是干嘛的。</p>
+<pre><code>document.getElementById(&quot;jiaBtn&quot;).onclick = function(){
+ store.dispatch({&quot;type&quot; : &quot;ZENGJIA&quot;});
+}
+</code></pre><h2 id="nodejs、npm、cnpm"><a href="#nodejs、npm、cnpm" class="headerlink" title="nodejs、npm、cnpm"></a>nodejs、npm、cnpm</h2><p>Node.js是一个平台不是一个语言，语言仍然是JavaScript。此时Node.js平台可以让我们用JavaScript语言来开发服务器程序，Node.js特别像java虚拟机，大家只需要写一份语言，就可以运行在windows、mac、linux上。安装nodejs后会有npm命令，npm 可以安装node插件，cnpm使用的是淘宝网的镜像<a href="http://npm.taobao.org" target="_blank" rel="noopener">http://npm.taobao.org</a>，安装命令提示符执行：<code>npm install cnpm -g --registry=https://registry.npm.taobao.org</code></p>
+<h2 id="git命令拉取项目"><a href="#git命令拉取项目" class="headerlink" title="git命令拉取项目"></a>git命令拉取项目</h2><p>新建一个文件夹，在文件夹里执行gitbash，输入<br><code>$git clone ssh://(你要拉取项目的ssh码)</code></p>
 
       
     </div>
@@ -395,15 +452,15 @@ ctx.stroke();
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/01/14/爬虫溢前端面试题及个人总结-一/" rel="next" title="爬虫溢前端面试题及个人总结(一)">
+                <i class="fa fa-chevron-left"></i> 爬虫溢前端面试题及个人总结(一)
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/13/性能优化部分总结/" rel="prev" title="性能优化部分总结">
-                性能优化部分总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -594,7 +651,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#放置一个canvas标签"><span class="nav-number">1.</span> <span class="nav-text">放置一个canvas标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js部分"><span class="nav-number">2.</span> <span class="nav-text">js部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#所有的属性语句，都是进行一些配置"><span class="nav-number">3.</span> <span class="nav-text">所有的属性语句，都是进行一些配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#所有的方法语句，都是在执行“动令”"><span class="nav-number">4.</span> <span class="nav-text">所有的方法语句，都是在执行“动令”</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#function内路由跳转"><span class="nav-number">1.</span> <span class="nav-text">function内路由跳转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于react路由带-号问题"><span class="nav-number">2.</span> <span class="nav-text">关于react路由带#号问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react组件参数验证"><span class="nav-number">3.</span> <span class="nav-text">react组件参数验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react取input值"><span class="nav-number">4.</span> <span class="nav-text">react取input值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise对象"><span class="nav-number">5.</span> <span class="nav-text">Promise对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#babel是干什么的"><span class="nav-number">6.</span> <span class="nav-text">babel是干什么的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eslint"><span class="nav-number">7.</span> <span class="nav-text">eslint</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代理接口"><span class="nav-number">8.</span> <span class="nav-text">代理接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Reducer"><span class="nav-number">9.</span> <span class="nav-text">什么是Reducer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发送action"><span class="nav-number">10.</span> <span class="nav-text">发送action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs、npm、cnpm"><span class="nav-number">11.</span> <span class="nav-text">nodejs、npm、cnpm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git命令拉取项目"><span class="nav-number">12.</span> <span class="nav-text">git命令拉取项目</span></a></li></ol></div>
             
 
           </div>
