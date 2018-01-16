@@ -241,6 +241,326 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/爬虫溢关于html5的个人总结-二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YangYi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/myphoto.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨溢的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/17/爬虫溢关于html5的个人总结-二/" itemprop="url">爬虫溢关于html5的个人总结(二)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-17T03:11:43+08:00">
+                2018-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>接上一篇，本篇主要是关于css3新特性。</p>
+<p>整体感知：</p>
+<pre><code>&lt;style type=&quot;text/css&quot;&gt;
+    div{
+        width: 200px;
+        height: 200px;
+        background-color:orange;
+        transition:all 2s cubic-bezier(0, 0.84, 0, 0.98) 0s;
+    }
+    div.cur{
+        transform:rotateX(110deg) rotateY(360deg) translateZ(180px);
+        width:600px;
+    }
+    section{
+        margin:100px;
+        perspective:300px;
+        width: 200px;
+        height: 200px;
+        border: 1px solid #000;
+        animation:zhuan 1s 0s infinite;
+    }
+    @-webkit-keyframes zhuan{
+        from{
+            transform:rotate(0deg);
+        }
+        to{
+            transform:rotate(360deg);
+        }
+    }
+&lt;/style&gt;
+ &lt;input type=&quot;button&quot; value=&quot;按我&quot; id=&quot;btn&quot; /&gt;
+&lt;section&gt;
+    &lt;div id=&quot;box&quot;&gt;&lt;/div&gt;
+&lt;/section&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var btn = document.getElementById(&quot;btn&quot;);
+var box = document.getElementById(&quot;box&quot;);
+btn.onclick = function(){
+    box.className = &quot;cur&quot;;
+}
+&lt;/script&gt;
+</code></pre><p>Css3和HTML5没有任何关系。</p>
+<p>Css3没有颠覆传统的css的写法。</p>
+<p>Css有一个优点：浏览器遇见自己不认识的选择器、属性、会静默，不会报错！</p>
+<p><strong>Css3主要的改变</strong></p>
+<blockquote>
+<p>选择器、伪类</p>
+<p>伪元素</p>
+<p>Border 的变化</p>
+<p>Background 的变化; 渐变、尺寸、裁切</p>
+<p>Transition 过渡</p>
+<p>Transform 变形 </p>
+<p>Animation 动画</p>
+<p>新的盒子模型flex</p>
+<p>响应式 </p>
+</blockquote>
+<p><strong>属性选择器</strong></p>
+<blockquote>
+<p>p:first-of-type</p>
+<p>p:last-of-type</p>
+<p>p:nth-of-type(3)</p>
+<p>p:nth-of-type(3n+2)</p>
+<p>p:nth-last-of-type(2n+3)</p>
+</blockquote>
+<p>以上的全部选择器。JQ全都支持！ IE6兼容性。</p>
+<p><strong>关系选择器</strong></p>
+<p>“&gt;”表示儿子关系</p>
+<p>“+”表示下一个亲兄弟</p>
+<p>“~”表示后面的所有的兄弟</p>
+<p><strong>伪类</strong></p>
+<p>:hover 表示鼠标触碰的样子</p>
+<p>:focus 得到焦点的控件</p>
+<p>:enabled 有效的控件</p>
+<p>:disabled 无效的控件</p>
+<p>:empty 空标签</p>
+<p><strong>伪元素</strong></p>
+<p>有两个冒号。 ::before 和::after</p>
+<p>功能即使替代了css的“钩子”，可以减少小标签的使用；</p>
+<p>注意: ::before和::after 都是行内元素，必须转块后设置宽度高度。必须写content属性。可以值为空，但不能不写。</p>
+<p>清除浮动：</p>
+<pre><code>div::before{
+       content:&apos;&apos;;
+    clear:both;
+    display:block;
+}
+</code></pre><p>::selection 反选的内容</p>
+<p>::first-line 首行</p>
+<p>::first-letter 首字</p>
+<p><strong>圆角边框</strong></p>
+<p><code>border-radius</code> 值可以用px为单位，还可以百分比。</p>
+<p><strong>阴影</strong></p>
+<p>盒子阴影：</p>
+<pre><code>box-shadow：inset 1px 2px 3px 4px red;
+</code></pre><blockquote>
+<p>参数：</p>
+<p>0.内阴影</p>
+<p>1.向右的偏移</p>
+<p>2.向下的偏移</p>
+<p>3.模糊的程度</p>
+<p>（右、下、模）→（肉加馍）</p>
+<p>4.延伸（可省略）</p>
+<p>5.颜色</p>
+</blockquote>
+<p>文字阴影：</p>
+<pre><code>text-shadow 1px 2px 10px red；
+</code></pre><p>参数：右、下、模、色； 没有inset和延展，可以用多阴影。</p>
+<p><strong>background系列的属性</strong></p>
+<p>Css2.1中</p>
+<pre><code>background-color:red;
+background-image:url(../images/123.jpg);
+background-repeat:no-repeat;
+background-position:100px 60px;
+background-attachment:fixed;
+</code></pre><p>Css3又曾加一系列的属性</p>
+<p><strong>background-origin</strong></p>
+<p>背景起源，第一张背景图的渲染位置。</p>
+<p>注意：渲染的位置是在内容的盒子里，而不是padding</p>
+<pre><code>background-origin:content-box;
+</code></pre><p><strong>background-clip</strong></p>
+<p>背景裁切。裁切的是padding区域的背景</p>
+<pre><code>background-clip:content-box;
+</code></pre><p>两个结合：</p>
+<pre><code>background-origin:content-box;
+background-clip:content-box;
+等价于：
+background:url(../images/wyf.png) content-box;
+</code></pre><p><strong>background-size</strong>（背景尺寸）</p>
+<p>现在我们可以设置背景尺寸；</p>
+<p>两个参数：宽度、高度。若自动的按比例设置，写auto；可以写百分比，表示容器的百分之多少。</p>
+<pre><code>background-size:100px 100px;
+</code></pre><p>覆盖：</p>
+<pre><code>Background-size:cover 
+</code></pre><p>容纳：</p>
+<pre><code>Background-size:contain
+</code></pre><p><code>Background-size:cover</code>尽可能的铺满，不用管图片是否显示完整。<br>在PS中按住shift健缩放图片，在铺满情况下，直到宽度或高度一边被卡住；</p>
+<p><code>Background-size:contain</code>尽可能的容纳整体图片，不管图片是否是重复显示。在PS中按住shift健缩放图片，直到图片高度边或宽度边被卡住，先卡哪个边就是哪个边；</p>
+<p><strong>背景精灵</strong></p>
+<p>承载背景图片的div尺寸要放大；</p>
+<p>背景尺寸要放大</p>
+<p>背景定位的尺寸放大</p>
+<p><strong>渐变</strong></p>
+<pre><code>background-image:-webkit-linear-gradient(top,red,green);
+</code></pre><p>Linear 线性</p>
+<p>gradient 渐变</p>
+<pre><code>-webkit-  chrome  safari 必须加上前缀
+-moz- 火狐的前缀
+-ms-  高级版本IE edge 前缀 
+-o- 欧朋
+</code></pre><p>兼容性：</p>
+<p><code>background-image:-webkit-linear-gradient(top,red,green);
+background-image:-moz-linear-gradient(top,red,green);
+background-image:-ms-linear-gradient(top,red,green);
+background-image:-o-linear-gradient(top,red,green);
+background-image:linear-gradient(180deg,red,green); //W3C规范的；</code></p>
+<p>渐变的第一个参数是“方向”下面是从右上开始渲染</p>
+<pre><code>background-image:-webkit-linear-gradient(top right,red,green);
+</code></pre><p>可以deg度数；</p>
+<p><code>background-image:-webkit-linear-gradient(274deg,red,green);
+等价：
+ background-image:linear-gradient(176deg,red,green);</code></p>
+<p><img src="/2018/01/17/爬虫溢关于html5的个人总结-二/pic1.png" alt=" "></p>
+<p>方向后面的参数是颜色的罗列；用逗号隔开；可以用百分比表示颜色的范围；</p>
+<pre><code>background-image:-webkit-linear-gradient(top,#ff0000 0%,#ff00ff 15%,#0000ff 33%,#00ffff 49%,#00ff00 67%,#ffff00 84%,#ff0000 100%);
+</code></pre><p>径向渐变<br>第一个参数是圆心位置；</p>
+<pre><code>background-image:-webkit-radial-gradient(250px 250px,#ff0000,#ff00ff);
+</code></pre><p><strong>多背景</strong></p>
+<p>一个盒子可以携带多个背景图</p>
+<pre><code>background: url(&apos;../images/wyf.png&apos;) content-box,url(&apos;../images/ly.jpg&apos;);
+</code></pre><p><strong>过渡动画</strong></p>
+<p>transition 属性</p>
+<pre><code>transition :all 1s ease 0s;
+</code></pre><p>参数：</p>
+<p>第一个参数：transition-property属性，表示什么东西参与过渡，若想要所有的属性都参加过渡，写all；</p>
+<p>第二个参数：transition-duration属性，表示动画的持续时间，单位s,不是毫秒；</p>
+<p>第三个参数：transition-timing-function属性，表示缓冲，常见有ease（两头慢，中间快）和linear（匀速）。</p>
+<p>实际上，还可以写贝塞尔曲线的值；</p>
+<p>第四个参数： transition-delay，表示延时时间，单位s。</p>
+<p><strong>什么属性可以参加动画；</strong></p>
+<p>所有属性可以参加动画。</p>
+<p>background-color背景颜色可以过渡。</p>
+<p>background-position也是可以过渡。</p>
+<p>background-image 背景图片可以过渡；</p>
+<p>transform变形都能参加过渡。</p>
+<p>继承：不继承；</p>
+<p><strong>变形</strong></p>
+<p>transform  Rotate旋转</p>
+<pre><code>transform:rotate(30deg);
+</code></pre><p>Deg表示度数。单位不能少，只有deg单位。</p>
+<p>Skew 斜切</p>
+<pre><code>transform:skew(10deg,20deg);
+</code></pre><p>Scale: 缩放</p>
+<p>大于1：放大，0-1：缩小；</p>
+<pre><code>transform:scale(0.5);
+</code></pre><p>没有变形：</p>
+<pre><code>Transform:none;
+</code></pre><p>Transform多属性书写：</p>
+<pre><code>Transform:rotate(30deg) skew(20deg,10deg) scale(2)
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    <div>
+   
+    </div>
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/爬虫溢关于html5的一些总结-一/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2354,7 +2674,7 @@ ctx.stroke();
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2467,7 +2787,7 @@ ctx.stroke();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共11.0k字</span>
+  <span class="post-count">博客全站共12.3k字</span>
 </div>
         
 
