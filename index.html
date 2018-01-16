@@ -241,6 +241,374 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/爬虫溢关于html5的一些总结-一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YangYi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/myphoto.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨溢的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/17/爬虫溢关于html5的一些总结-一/" itemprop="url">爬虫溢关于html5的一些总结(一)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-17T00:09:28+08:00">
+                2018-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>本文只是个人的一些总结，可能不够完善，欢迎补充发邮件给我，侧边栏有的我email。</p>
+</blockquote>
+<p><strong>简介：</strong><br>2014年10月29日，HTML5标准规范终于最终制定完成了，并已公开发布。html5不仅仅颁布了超文本语言，而是一整套API的集合！</p>
+<p><strong>新的语义标签：</strong>(丰富了表单)</p>
+<p>header、section、footer、nav、aside、article、address等等；</p>
+<p><strong>设备兼容特性</strong>，html5提供了移动设备的支持，设备的设置的所有的兼容API方案，浏览器获取GPS、摄像头、陀螺仪、蜂鸣器等，还加入全屏的API和拖放API；</p>
+<p><strong>连接的特性：</strong><br>HTTP是无连接的，你的浏览器和服务器之间没有长连接，HTML5中提出了<strong>websocket特性</strong>，可以让浏览器和服务器实时的连接，下面简单介绍一下websocket：</p>
+<p>websocket是html5规范中的一个部分，它借鉴了socket(<a href="https://www.cnblogs.com/myzhibie/p/4470065.html" target="_blank" rel="noopener">了解socket</a>)这种思想，为web应用程序客户端和服务端之间(注意是客户端服务端)提供一种全双工通信机制，同时，它又是一种新的应用层协议，通常表示为：<code>ws://echo.websocket.org/?encoding=text HTTP/1.1</code>,可以看到除了前面的协议名和http不同之外，它的表示地址就是传统的url地址。可以看到websocket并不是简单地将socket这一概念在浏览器环境中的移植，websocket本身虽然也是一种新的应用层协议，但是它也不能够脱离http而单独存在。我们在客户端构建一个websocket实例，并且为它绑定一个需要连接到的服务器地址，当客户端连接服务端的时候，会向服务端发送一个类似下面的http报文</p>
+<p><img src="/2018/01/17/爬虫溢关于html5的一些总结-一/302138024434910.png" alt=" "></p>
+<p>可以看到，这是一个http get请求报文，注意该报文中有一个upgrade首部，它的作用是告诉服务端需要将通信协议切换到websocket，如果服务端支持websocket协议，那么他就会将自己的通信协议切换到websocket，同时发给客户端类似于以下的一个响应报文头：</p>
+<p><img src="/2018/01/17/爬虫溢关于html5的一些总结-一/302141403188648.png" alt=" "></p>
+<p>返回的状态码为101，表示同意客户端协议转换请求，并将它转换为websocket协议，以上过程都是利用http通信完成的，称之为websocket协议握手，讲过这握手之后，客户端和服务端就建立了websocket连接，以后的通信走的都是websocket协议了，所以总结为websocket握手需要借助于http协议，建立连接后通信过程使用websocket协议。同时需要了解的是，该websocket连接还是基于我们刚才发起http连接的那个TCP连接，一旦建立连接之后，我们就可以进行数据传输了， websocket提供两种数据传输：文本数据和二进制数据。<br>基于以上分析，我们可以看到，websocket能够提供低延迟，高性能的客户端与服务端的双向数据通信，它颠覆了之前web开发的请求处理响应模式，并提供了一种真正意义上的客户端请求，服务器推送数据的模式，特别适合实时的数据交互应用开发。</p>
+<p>详情请看：<a href="https://www.cnblogs.com/wei2yi/archive/2011/03/23/1992830.html" target="_blank" rel="noopener">认识HTML5的WebSocket</a></p>
+<p><strong>新的音频和视频：</strong></p>
+<p>HTML5提出了新的video和audio标签，可以让你的网页轻松，不通过安装flash(Adobe)。</p>
+<blockquote>
+<p>autoplay 自动播放</p>
+<p>Width  视频的宽度</p>
+<p>Control 显示控件</p>
+<p>Loop 循环</p>
+</blockquote>
+<p><strong>新的画布canvas和svg(矢量)</strong></p>
+<p>详情请见：<a href="https://www.cnblogs.com/best/p/6107565.html" target="_blank" rel="noopener">canvas、webGL、SVG</a></p>
+<p><strong>性能与集成的特性</strong></p>
+<p> XMLHTTPResquest对象; HTML5中有了获取进度的API。</p>
+<p><strong>新的语言规定</strong></p>
+<p>HTML5中自封闭的标签不用写结尾的反斜杠了</p>
+<pre><code>&lt;meta charset=&quot;UTF-8&quot; &gt;
+&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&quot;&gt;
+&lt;br&gt;
+&lt;hr&gt;
+</code></pre><p>属性可以没有引号，非常合法</p>
+<pre><code>&lt;img src=../images/tt.jpg alt=唐嫣 title=唐嫣&gt;
+</code></pre><p>标签名不一定是小写的</p>
+<pre><code>&lt;DIV&gt;&lt;/DIV&gt;
+</code></pre><p>所有的需要些type的地方，丢可以不写type了；</p>
+<pre><code>&lt;script&gt;&lt;/script&gt;
+</code></pre><p>但个人建议必须写！ 为了保持风骨！ </p>
+<p><strong>新的大纲标签</strong></p>
+<pre><code>&lt;header&gt;&lt;/header&gt; 头部的语义
+&lt;footer&gt;&lt;/footer&gt; 尾部的语义
+&lt;article&gt;&lt;/article&gt; 文章语义
+&lt;section&gt;&lt;/section&gt; 区域语义
+&lt;nav&gt;&lt;/nav&gt; 导航语义
+&lt;aside&gt;&lt;/aside&gt; 侧边内容
+&lt;main&gt;&lt;/main&gt; 主要内容
+</code></pre><p><strong>新的小语义标签</strong></p>
+<p>Address  地址</p>
+<pre><code>&lt;address&gt;
+北京市昌平区 点击查看百度地图
+&lt;/address&gt;
+</code></pre><p>数据和数据标题：<br>Figure和 figcaption<br>数据就是图片，表格等等。</p>
+<pre><code>&lt;figure&gt;
+    &lt;img src=&quot;../images/tt.jpg&quot; alt=&quot;&quot;&gt;
+    &lt;figcaption&gt;这个是我最喜欢的明星&lt;/figcaption&gt;
+&lt;/figure&gt;
+</code></pre><p>保留格式，pre（原型输出）</p>
+<pre><code>&lt;pre&gt;
+    独立寒秋， 湘江北去， 橘子洲头。
+    看万山红遍， 层林尽染； 漫江碧透， 百舸争流。
+    鹰击长空， 鱼翔浅底， 万类霜天竞自由。
+    怅寥廓， 问苍茫大地， 谁主沉浮？
+    携来百侣曾游， 忆往昔峥嵘岁月稠。
+    恰同学少年， 风华正茂； 书生意气， 挥斥方遒。
+    指点江山， 激扬文字， 粪土当年万户侯。
+    曾记否， 到中流击水， 浪遏飞舟？
+&lt;/pre&gt;
+</code></pre><p>缩写词 abbr</p>
+<pre><code>&lt;p&gt;咱们出去玩的时候，记得带有&lt;abbr title=&quot;GPS是英文Global Positioning System（全球定位系统）&quot;&gt;GPS&lt;/abbr&gt;的手机哈！&lt;/p&gt;
+</code></pre><p><img src="/2018/01/17/爬虫溢关于html5的一些总结-一/pic1.png" alt=" "></p>
+<p>引用 cite</p>
+<pre><code>&lt;p&gt;在没有得到任何证据的情况下是不能进行推理的，那样的话，只能是误入歧途&lt;cite style=&quot;color:red&quot;&gt;福尔摩斯探案集1888年&lt;/cite&gt;&lt;/p&gt;
+</code></pre><p><img src="/2018/01/17/爬虫溢关于html5的一些总结-一/pic2.png" alt=" "></p>
+<p>程序：code</p>
+<pre><code>&lt;code&gt;
+    for(var i =0 ; i &lt;100 ; i++){
+        if( 1%2){
+            while(){
+
+            }
+        }
+    }
+&lt;/code&gt;
+</code></pre><p>定义：dfn</p>
+<pre><code>&lt;p&gt;&lt;dfn&gt;什么是浮云&lt;/dfn&gt;一般暗指游子，浮云游子意，落日故人情。&lt;/p&gt;
+</code></pre><p>键盘按键 kbd</p>
+<pre><code>&lt;p&gt;在PS中，羽化的快捷键 是&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;shift&lt;/kbd&gt;+&lt;kbd&gt;i&lt;/kbd&gt;&lt;/p&gt;
+</code></pre><p>高亮 mark</p>
+<pre><code>&lt;p&gt;明天天气很热，注意&lt;mark&gt;保暖&lt;/mark&gt;&lt;/p&gt;
+</code></pre><p><img src="/2018/01/17/爬虫溢关于html5的一些总结-一/pic3.png" alt=" "></p>
+<p>引用语句 q</p>
+<pre><code>&lt;p&gt;我们学生必须&lt;q cite=&quot;http://www.360doc.com/content/15/1030/21/868418_509532510.shtml&quot;&gt;好好学习，天天向上&lt;/q&gt;&lt;/p&gt;
+</code></pre><p>汉语拼音 ruby 、rp、rt</p>
+<p>ruby 元素由一个或多个字符（需要一个解释/发音）和一个提供该信息的 rt 元素组成，还包括可选的 rp 元素，定义当浏览器不支持 “ruby” 元素时显示的内容。</p>
+<pre><code>&lt;ruby&gt;
+    汉&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;hàn&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;
+    子&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;zǐ&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;
+&lt;/ruby&gt;
+</code></pre><p><img src="/2018/01/17/爬虫溢关于html5的一些总结-一/pic4.png" alt=" "></p>
+<p>举个例子： samp</p>
+<pre><code>&lt;p&gt;
+    有钱人基本长得丑 &lt;samp&gt;马云&lt;/samp&gt;
+    不过张的丑的不一定是有钱人&lt;samp&gt;我&lt;/samp&gt;
+&lt;/p&gt;
+</code></pre><p><img src="/2018/01/17/爬虫溢关于html5的一些总结-一/pic5.png" alt=" "></p>
+<p>小文字 small</p>
+<pre><code>&lt;p&gt;极品雷事利驱使，淡定继续做&lt;small&gt;猎奴&lt;/small&gt;&lt;/p&gt;
+</code></pre><p><img src="/2018/01/17/爬虫溢关于html5的一些总结-一/pic6.png" alt=" "></p>
+<p>时间 time</p>
+<pre><code>&lt;p&gt;每天&lt;time datetime=&quot;2017年4月14日17:22:22&quot;&gt;9点整&lt;/time&gt;上课&lt;/p&gt;
+</code></pre><p>变量语义 var</p>
+<pre><code>&lt;p&gt;二元一次方程：&lt;var&gt;x&lt;/var&gt; = &lt;var&gt;y&lt;/var&gt;+ 2&lt;/p&gt;
+</code></pre><p><img src="/2018/01/17/爬虫溢关于html5的一些总结-一/pic7.png" alt=" "></p>
+<p>换行机会 wbr</p>
+<p>细节 details, summary</p>
+<p>对话框语义 dialog</p>
+<p>菜单语义： menu</p>
+<p>模版  template</p>
+<p><strong>表单</strong></p>
+<pre><code>&lt;form action=&quot;&quot; id=&quot;f0&quot;&gt;
+    &lt;p&gt;
+        请输入年龄：
+        &lt;input type=&quot;number&quot; name=&quot;&quot; class=&quot;w400&quot; id=&quot;&quot; min=&quot;2&quot; max=&quot;140&quot; autofocus placeholder=&quot;请输入年龄，在2-140之间&quot; /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        您最喜欢的颜色
+        &lt;input type=&quot;color&quot; name=&quot;&quot; id=&quot;&quot; /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+    出生日期：
+    &lt;input type=&quot;date&quot; name=&quot;&quot; id=&quot;&quot; /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        出生星期：
+        &lt;input type=&quot;week&quot; name=&quot;&quot; id=&quot;&quot; /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        起床时间：
+        &lt;input type=&quot;time&quot; name=&quot;&quot; id=&quot;&quot; /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        您的邮箱：
+        &lt;input type=&quot;email&quot; name=&quot;&quot; id=&quot;&quot; /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        您的身高：
+        &lt;input type=&quot;range&quot; name=&quot;&quot; id=&quot;range&quot; min=&quot;60&quot; max=&quot;250&quot; /&gt;&lt;span id=&quot;shuzhi&quot;&gt;&lt;/span&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        查询：
+        &lt;input type=&quot;search&quot; name=&quot;&quot; id=&quot;&quot; /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        电话：
+        &lt;input type=&quot;tel&quot; name=&quot;&quot; id=&quot;&quot; /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        博客地址：
+        &lt;input type=&quot;url&quot; name=&quot;&quot; id=&quot;&quot; /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        你的技能：
+        &lt;input type=&quot;text&quot; name=&quot;&quot; list=&quot;tip&quot; /&gt;
+        &lt;datalist id=&quot;tip&quot;&gt;
+            &lt;option value=&quot;internet&quot;&gt;网上冲浪&lt;/option&gt;
+            &lt;option value=&quot;skating&quot;&gt;滑雪&lt;/option&gt;
+            &lt;option value=&quot;swimming&quot;&gt;游泳&lt;/option&gt;
+        &lt;/datalist&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        QQ号：
+        &lt;input type=&quot;text&quot; name=&quot;&quot; id=&quot;&quot; pattern=&quot;^[\d]{5,10}$&quot;/&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        爱好：
+        &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; /&gt;抽烟&lt;/label&gt;
+        &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; /&gt;喝酒&lt;/label&gt;
+        &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; /&gt;烫头&lt;/label&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        提交：
+        &lt;input type=&quot;submit&quot; value=&quot;提示&quot; /&gt;
+    &lt;/p&gt;
+&lt;/form&gt;
+ &lt;p&gt;
+    &lt;input type=&quot;text&quot; name=&quot;xingming&quot; form=&quot;f0&quot; /&gt;
+&lt;/p&gt;
+</code></pre><p><strong>本地存储</strong></p>
+<p>HTML5提供了新的API。让我们可以在客户机的电脑里，存储数据。<strong>LocalStorage</strong>和<strong>SessionStorage</strong>。本地存储和会话存储。 统称叫“本地存储”</p>
+<p>localStorage.setItem  持久数据</p>
+<pre><code>localStorage.setItem(&quot;dahuang&quot;,data);
+</code></pre><p>localStorage.getItem 提取数据</p>
+<pre><code>var str = localStorage.getItem(&quot;dahuang&quot;);
+</code></pre><p>本地存储会自动的为每一个网站（IP地址）建立一个独立的表格，在同一个网站（IP地址）下数据是可共享的。<br>localStorage存储东西，是永远不丢失。<br>sessionStorage,它是浏览器窗口一关，数据就丢失啦！</p>
+<p>服务器给你的 Response Header 中带有一个 Set-Cookie字段，可以设置过期时间等等，今后再访问这个服务器，都会在Request Header 带着Cookie字段上去。这样服务器就能识别浏览器。这个就是cookie技术。<br>前端开发工程师，利用的是cookie是本地存储的小文件这个特点：</p>
+<pre><code>Docuemnt.cookie
+</code></pre><p>长时间以来，cookie是唯一的在客户端中持久数据的途径。但是实际上cookie作为数据的持久方案。是对cookie的“奇技淫巧”。Cookie本身不是用来做持久数据的。</p>
+<p>使用JSON来持久数据</p>
+<p>本地存储是以字符串的方式存储的，我们一般情况是存JSON格式。 但是数据库中只能存字符串，所以要进行一段事情：</p>
+<blockquote>
+<p>把JSON变为字符串 → 存储 → 读取 → 把JSON变为对象</p>
+</blockquote>
+<pre><code>// 要存储的东西
+ var data = {&quot;a&quot;:1,&quot;b&quot;:2};
+// 转成字符串
+var dataStr = JSON.stringify(data);
+// 持久
+localStorage.setItem(&quot;dahuang&quot;,dataStr);
+// 读取
+var str = localStorage.getItem(&quot;dahuang&quot;);
+// // 变为对象
+var dataObj = JSON.parse(str);
+
+console.log(dataObj.a)
+</code></pre><p>多次保存同一个key，会覆盖，之前的key就没了。所以我们要“制作追加”的方案。</p>
+<blockquote>
+<p>读取 →  修改 → 保存</p>
+</blockquote>
+<pre><code>// 要存储的东西
+ var data = {&quot;a&quot;:1,&quot;b&quot;:2};
+// 转成字符串
+var dataStr = JSON.stringify(data);
+// 持久
+localStorage.setItem(&quot;dahuang&quot;,dataStr);
+// 读取
+var str = localStorage.getItem(&quot;dahuang&quot;);
+// // 变为对象 (改变)
+var dataObj = JSON.parse(str); 
+//以上都是原数据
+//追加
+dataObj.c = 3;
+
+var dataStrOnce = JSON.stringify(dataObj);
+// 持久
+localStorage.setItem(&quot;dahuang&quot;,dataStrOnce);
+// 读取
+var str = localStorage.getItem(&quot;dahuang&quot;);
+// // 变为对象 (改变)
+var dataObj1 = JSON.parse(str);
+console.log(dataObj1.c)
+</code></pre><p><strong>JSON.parse(); 把字符串变为对象</strong></p>
+<p><strong>JSON.stringify() 把对象变成字符串</strong></p>
+<p>本篇主要是html5的新特性，下一篇css新特性。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    <div>
+   
+    </div>
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/15/爬虫溢前端面试题及个人总结-二/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1986,7 +2354,7 @@ ctx.stroke();
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2099,7 +2467,7 @@ ctx.stroke();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共8.5k字</span>
+  <span class="post-count">博客全站共11.0k字</span>
 </div>
         
 
