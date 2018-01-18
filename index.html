@@ -321,11 +321,8 @@
 <p>如果你碰巧用Debian或Ubuntu Linux，通过一条<code>sudo apt-get install git</code>就可以直接完成Git的安装，非常简单。</p>
 <h1 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h1><p>创建一个版本库非常简单，首先，选择一个合适的地方，创建一个空目录：</p>
 <pre><code>$ mkdir learngit
-
 $ cd learngit
-
 $ pwd
-
 /Users/yangyia/learngit
 </code></pre><p><code>pwd</code>命令用于显示当前目录。在我的Mac上，这个仓库位于<code>/Users/yangyia/learngit。</code></p>
 <p><strong>如果你使用Windows系统，为了避免遇到各种莫名其妙的问题，请确保目录名（包括父目录）不包含中文。</strong></p>
@@ -335,9 +332,8 @@ $ pwd
 <p>如果你没有看到.git目录，那是因为这个目录默认是隐藏的，用ls -ah命令就可以看见。</p>
 <h2 id="把文件添加到版本库"><a href="#把文件添加到版本库" class="headerlink" title="把文件添加到版本库"></a>把文件添加到版本库</h2><p>编写一个<code>readme.txt</code>文件，内容如下：</p>
 <blockquote>
-<p>Git is a version control system.<br>Git is free software.</p>
+<p>Git is a version control system.<br>Git is free software.<br>一定要放到learngit目录下（子目录也行），因为这是一个Git仓库，放到其他地方Git再厉害也找不到这个文件。</p>
 </blockquote>
-<p>一定要放到learngit目录下（子目录也行），因为这是一个Git仓库，放到其他地方Git再厉害也找不到这个文件。</p>
 <p>把一个文件放到Git仓库只需要两步。</p>
 <p>第一步，用命令<code>git add</code>告诉Git，把文件添加到仓库：</p>
 <pre><code>$ git add readme.txt
@@ -346,7 +342,6 @@ $ pwd
 <pre><code>$ git commit -m &quot;wrote a readme file&quot;
 </code></pre><p><code>-m</code>后面输入的是本次提交的说明，可以输入任意内容，当然最好是有意义的，这样你就能从历史记录里方便地找到改动记录。</p>
 <pre><code>git status //命令可以让我们时刻掌握仓库当前的状态
-
 git diff  //看看具体修改了什么内容
 </code></pre><h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><pre><code>git log  //命令查看历史记录
 </code></pre><p>如果嫌输出信息太多，可以加上<code>--pretty=oneline</code>参数</p>
@@ -440,21 +435,17 @@ Switched to branch &apos;master&apos;
 </code></pre><p>或者，用<code>git remote -v</code>显示更详细的信息：</p>
 <pre><code>$ git remote -v
 </code></pre><p>上面显示了可以抓取和推送的<code>origin</code>的地址。如果没有推送权限，就看不到push的地址。</p>
-<p>推送分支</p>
+<p><strong>推送分支</strong></p>
 <p>推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：</p>
 <pre><code>$ git push origin master
 </code></pre><p>如果要推送其他分支，比如<code>dev</code>，就改成：</p>
 <pre><code>$ git push origin dev
 </code></pre><p>但是，并不是一定要把本地分支往远程推送，那么，哪些分支需要推送，哪些不需要呢？</p>
 <ul>
-<li><p><code>master</code>分支是主分支，因此要时刻与远程同步；</p>
-</li>
-<li><p><code>dev</code>分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；</p>
-</li>
-<li><p>bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；</p>
-</li>
-<li><p>feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。</p>
-</li>
+<li><code>master</code>分支是主分支，因此要时刻与远程同步；</li>
+<li><code>dev</code>分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；</li>
+<li>bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；</li>
+<li>feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。</li>
 </ul>
 <h2 id="抓取分支"><a href="#抓取分支" class="headerlink" title="抓取分支"></a>抓取分支</h2><p>多人协作时，大家都会往<code>master</code>和<code>dev</code>分支上推送各自的修改。</p>
 <p>现在，模拟一个你的小伙伴，可以在另一台电脑（注意要把SSH Key添加到GitHub）或者同一台电脑的另一个目录下克隆：</p>
@@ -471,8 +462,9 @@ $ git commit -m &quot;add coding: utf-8&quot;
 $ git push origin dev
 </code></pre><p>推送失败，因为你的小伙伴的最新提交和你试图推送的提交有冲突，解决办法也很简单，Git已经提示我们，先用<code>git pull</code>把最新的提交从<code>origin/dev</code>抓下来，然后，在本地合并，解决冲突，再推送：</p>
 <pre><code>$ git pull
-</code></pre><p><code>git pull</code>也失败了，原因是没有指定本地<code>dev</code>分支与远程<code>origin/dev</code>分支的链接，根据提示，设置<code>dev</code>和<code>origin/dev</code>的链接：<br>    $ git branch</p>
-<p>再pull：</p>
+</code></pre><p><code>git pull</code>也失败了，原因是没有指定本地<code>dev</code>分支与远程<code>origin/dev</code>分支的链接，根据提示，设置<code>dev</code>和<code>origin/dev</code>的链接：</p>
+<pre><code>$ git branch
+</code></pre><p>再pull：</p>
 <pre><code>$ git pull
 </code></pre><p>这回<code>git pull</code>成功，但是合并有冲突，需要手动解决，解决的方法和分支管理中的解决冲突完全一样。解决后，提交，再push：</p>
 <pre><code>$ git commit -m &quot;merge &amp; fix hello.py&quot;
