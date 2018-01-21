@@ -241,6 +241,165 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/21/爬虫溢关于svn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YangYi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/myphoto.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨溢的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/21/爬虫溢关于svn/" itemprop="url">爬虫溢关于svn</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-21T16:10:36+08:00">
+                2018-01-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>上一篇文章简单介绍了git的使用，这篇文章主要介绍svn的使用。<br>svn官网：<a href="https://tortoisesvn.net/" target="_blank" rel="noopener">https://tortoisesvn.net/</a></p>
+</blockquote>
+<h1 id="什么是SVN"><a href="#什么是SVN" class="headerlink" title="什么是SVN"></a>什么是SVN</h1><p>SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。</p>
+<h1 id="SVN的下载安装"><a href="#SVN的下载安装" class="headerlink" title="SVN的下载安装"></a>SVN的下载安装</h1><p>下载地址：<a href="https://tortoisesvn.net/downloads.zh.html" target="_blank" rel="noopener">https://tortoisesvn.net/downloads.zh.html</a></p>
+<p>安装完不要忘记重启电脑</p>
+<p>安装完成后，按下鼠标右键，会看到如下界面：</p>
+<p><img src="/2018/01/21/爬虫溢关于svn/pic1.png" alt=" "></p>
+<p>说明SVN已经安装成功了。</p>
+<h1 id="SVN的常用操作"><a href="#SVN的常用操作" class="headerlink" title="SVN的常用操作"></a>SVN的常用操作</h1><h2 id="迁出配置库内容（SVN-Checkout）"><a href="#迁出配置库内容（SVN-Checkout）" class="headerlink" title="迁出配置库内容（SVN Checkout）"></a>迁出配置库内容（SVN Checkout）</h2><ol>
+<li>新建或进入目录下（比如E盘），右键 →SVN Checkout</li>
+<li>URL of repository 填写仓库路径即可 </li>
+<li>Revision处，“HEAD revision”是指最新版，也可以指定Revision为任意一个版本。 <img src="/2018/01/21/爬虫溢关于svn/pic2.jpg" alt=" "></li>
+<li>点击“OK”按钮后，在弹出的对话框中输入用户名和密码，验证成功后，项目文件开始从远程服务器下载到本地工作目录中： <img src="/2018/01/21/爬虫溢关于svn/pic3.jpg" alt=" "></li>
+<li>点击“确定”按钮后，即可获取完成，出现如下下载界面： <img src="/2018/01/21/爬虫溢关于svn/pic4.jpg" alt=" "></li>
+<li>下载完成后，服务器上所有内容会出现在本地文件夹下</li>
+</ol>
+<h2 id="更新文件（SVN-Update）"><a href="#更新文件（SVN-Update）" class="headerlink" title="更新文件（SVN Update）"></a>更新文件（SVN Update）</h2><p>1）当从配置库迁出相应目录后，他人对服务器上此目录内容进行了修改，则需要再次获取改动内容到本地目录的过程称为更新。更新可以针对一个文件、几个选中的文件或者整个文件目录。<br>选中要被更新的文件，右键选择“SVN Update”项，如下：</p>
+<p><img src="/2018/01/21/爬虫溢关于svn/pic5.jpg" alt=" "><br>2）点击“SVN Update”后会弹出窗口显示更新的进度，如下：</p>
+<p>若上述框中的有文件出现亮红，说明来自配置库的内容与你本地修改内容合并时出现了冲突</p>
+<p><img src="/2018/01/21/爬虫溢关于svn/pic6.png" alt=" "></p>
+<h2 id="提交更新-SVN-Commit"><a href="#提交更新-SVN-Commit" class="headerlink" title="提交更新(SVN Commit)"></a>提交更新(SVN Commit)</h2><p>1）本地文件修改后，若是需要更新到服务器上，则需要提交（Commit）最新的更新。<br>Commit的作用是将本地最新修改的文件同步到SVN服务端，供其他人来参考或者使用，当然使用之前，要先Update一下，来确保是最新的,在修改文件上击右键，出现菜单，选择“SVN Commit…”，如下：</p>
+<p><img src="/2018/01/21/爬虫溢关于svn/pic7.png" alt=" "><br>2）然后填写关于本次更新的日志（log message），这是必填项，否则commit会失败，如下：</p>
+<p><img src="/2018/01/21/爬虫溢关于svn/pic8.png" alt=" "><br>3）当出现下图所示提示框，则表明刚刚的修改已成功提交，并且当前的SVN版本号加1。</p>
+<p><img src="/2018/01/21/爬虫溢关于svn/pic9.png" alt=" "></p>
+<h2 id="增加文件-Add"><a href="#增加文件-Add" class="headerlink" title="增加文件(Add)"></a>增加文件(Add)</h2><p>1）将需要增加的新文件放入到本地迁出的文件夹TestManger目录的相应位置中，鼠标选中新文件右键选择“Tortoise SVN”的“Add”项，如下图所示：</p>
+<p><img src="/2018/01/21/爬虫溢关于svn/pic10.png" alt=" "><br>2）鼠标选中TestManger文件夹右键选择“SVN Commit…”，将新文件上传配置库对应文件夹中（若只上传单个文件，只需点中单个文件上传即可）。</p>
+<h2 id="检查更新（Check-for-modifications）"><a href="#检查更新（Check-for-modifications）" class="headerlink" title="检查更新（Check for modifications）"></a>检查更新（Check for modifications）</h2><p>此功能可以显示本地对文件所做的修改有哪些还没有提交。不光能看到对文件的修改变化，还包括增加文件或目录，删除文件或目录，移动文件或目录等。当他人提交了哪些文件的改动，也可通过此项来进行查询。</p>
+<h2 id="删除文件（Delete）"><a href="#删除文件（Delete）" class="headerlink" title="删除文件（Delete）"></a>删除文件（Delete）</h2><p>1）选中要被删除的文件，右键选择“Tortoise SVN”的“Delete”项，如下：<br><img src="/2018/01/21/爬虫溢关于svn/pic11.jpg" alt=" "><br>2）删除文件后，鼠标选中TestManger文件夹右键选择“SVN Commit…”项进行提交，提交方式同增加文件的提交方式，提交后则将新文件从配置库中删除。</p>
+<h2 id="撤销更改（Revert）"><a href="#撤销更改（Revert）" class="headerlink" title="撤销更改（Revert）"></a>撤销更改（Revert）</h2><p>在修改了某些文件后（文件未上传到配置库），需要返回到修改前的状态，则选中文件夹右键选择“Tortoise SVN”的“Revert…”项进行撤销，本地硬盘上的文件将恢复到修改前的内容，修改的内容将被删除。</p>
+<h2 id="锁定和解锁（Get-lock-and-Release-lock）"><a href="#锁定和解锁（Get-lock-and-Release-lock）" class="headerlink" title="锁定和解锁（Get lock and Release lock）"></a>锁定和解锁（Get lock and Release lock）</h2><p>当项目需要时可以在本地硬盘中将迁出的内容进行锁定，选中要被锁定的文件右键选择“Tortoise SVN”的“Get lock…”项进行锁定（锁定后他人将无法修改此文件），系统弹出锁定信息框。   当文本文件锁定后，需要通过解锁他人才能继续对文件进行修改。</p>
+<p>选中被锁定的文件右键选择“Tortoise SVN”的“Release lock…”项进行解锁。</p>
+<h2 id="重命名文件（Rename）"><a href="#重命名文件（Rename）" class="headerlink" title="重命名文件（Rename）"></a>重命名文件（Rename）</h2><p>修改文件名，选中需要重命名的文件或文件夹，然后右键“Tortoise SVN”的“Rename”，在弹出的对话框中输入新名称，点击“OK”按钮，并将修改文件名后的文件或文件夹“SVN Commit…”提交到SVN服务器上。</p>
+<h2 id="获取历史文件（Show-log）"><a href="#获取历史文件（Show-log）" class="headerlink" title="获取历史文件（Show log）"></a>获取历史文件（Show log）</h2><p>Show log顾名思义是显示日志的作用，主要是显示该文件或者该目录被执行的操作，是被谁修改了，以及修改的时间和日期。鼠标选中文件夹右键选择“Tortoise SVN”的“Show log”项，系统弹出此路径下的所有文件版本信息，如下：</p>
+<p><img src="/2018/01/21/爬虫溢关于svn/pic12.jpg" alt=" "></p>
+<p>本文参考：<a href="https://www.cnblogs.com/zhoumiao/p/5459552.html" target="_blank" rel="noopener">详情SVN使用</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    <div>
+   
+    </div>
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/20/爬虫溢关于express/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2856,197 +3015,6 @@ return _c(&apos;div&apos;, {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/13/Vue-组件间的样式污染/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="YangYi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/myphoto.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杨溢的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/13/Vue-组件间的样式污染/" itemprop="url">Vue 组件间的样式污染</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-13T19:17:23+08:00">
-                2018-01-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、污染是如何产生的？"><a href="#一、污染是如何产生的？" class="headerlink" title="一、污染是如何产生的？"></a>一、污染是如何产生的？</h2><p>得益于 Vue-loader，在 Vue 中可以使用类似于 Web Component 的组件化写法,<code>&lt;template&gt;&lt;/template&gt;&lt;style&gt;&lt;/style&gt;&lt;script&gt;&lt;/script&gt;</code>，在大多数情况下，我们希望组件间定义的样式是相互隔离的，在 Weex 当中的确如此，组件天生隔离，可是在 Vue 当中，运行的载体还是浏览器，所有的样式类还是会通过 <style> 标签插入头部，影响全局，交叉污染</p>
-<h2 id="二、增加-Scoped-标识"><a href="#二、增加-Scoped-标识" class="headerlink" title="二、增加 Scoped 标识"></a>二、增加 Scoped 标识</h2><p>依然是 Vue-loader，通过为组件中的 style 标签增加一个 scoped 标识，Vue-loader 在编译的过程中会为组件每一个元素节点增加 scopeId 作为属性，同时为所有的样式类加上属性选择器 scopeId，从而达到隔离的效果，大概是下面的样子：</p>
-<p>`// 编译前</p>
-<p><template><br>    <div class='bg'></div><br></template></p>
-<style scoped>
-  .bg {
-      background: #000;
-      width: 100px;
-      height: 100px;
-  }
-</style>
-
-</p><p>// 编译后</p>
-<p><template><br>    <div class="bg" data-v-8e399fae=""></div><br></template></p>
-<style>
-  .bg[data-v-8e399fae] {
-      background: #000;
-      width: 100px;
-      height: 100px;
-  }
-</style>`
-
-每个组件有唯一的 scopeId，按理说，这样应该能够做到样式隔离了，实际上，**这种方式其实表现已经足够好了，除了以下这种情况~~**
-
-## 三、ScopeId 的继承 ##
-
-我们把上面的例子再完善下：
-`
-// 父组件
-<template>
-    <div>
-        <div class="bg"></div>
-        <sub></sub>
-    </div>
-</template>
-<script>
-    import Sub from './sub';
-    export default {
-        components: { Sub }
-    };
-</script>
-<style scoped>
-.bg {
-    background-color: #000;
-    width: 100px;
-    height: 100px;
-}
-</style>
-
-<p>// 子组件</p>
-<p><template><br>    <div class="bg"><br>    </div><br></template></p>
-<p><script><br>    export default {<br>    };<br></script></p>
-<style scoped>
-.bg {
-    width: 300px;
-    height: 300px;
-    margin-top: 5px;
-}
-</style>
-
-<p>`<br>由于我们使用了 scoped 标识进行样式隔离，子组件的 div 不应该有任何背景颜色，可是现实总在狠狠的打脸~~</p>
-<p><img src="/2018/01/13/Vue-组件间的样式污染/2954145-5ef559ae23a7aa98.png" alt=" "></p>
-<p>不知道你的媚眼看到问题的所在了没：<br>子元素的<strong>根元素</strong>会继承父元素的 ScopeId！<br>子元素的<strong>根元素</strong>会继承父元素的 ScopeId！<br>子元素的<strong>根元素</strong>会继承父元素的 ScopeId！（说了三遍的话，肯定很重要）<br>由于子元素的<strong>根元素</strong>除了拥有自己的 ScopeId 属性，还继承了父元素的 ScopeId 属性，所以父元素的样式类 bg 对其依然有效</p>
-<h2 id="四、怎么破？"><a href="#四、怎么破？" class="headerlink" title="四、怎么破？"></a>四、怎么破？</h2><p>破解的方式也很简单，为每一个组件的根元素提供一个另类一点的样式名（如果有的话），例如就不要每个组件都命名为：wrap，根据业务名为：b1-wrap、b2-wrap 等</p>
-<blockquote>
-<p>组件中的非根元素，类名不管怎么命名，怎么重名，都是不会发生污染的，这个自己领悟~~</p>
-</blockquote>
-<h2 id="五、【更新】这不是bug"><a href="#五、【更新】这不是bug" class="headerlink" title="五、【更新】这不是bug"></a>五、【更新】这不是bug</h2><p>惭愧，文档查得不够详实，实际上官网已经有：<br><a href="https://vue-loader.vuejs.org/en/features/scoped-css.html" target="_blank" rel="noopener">Be careful with descendant selectors in recursive components! For a CSS rule with the selector .a .b, if the element that matches .a contains a recursive child component, then all .b in that child component will be matched by the rule.</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    <div>
-   
-    </div>
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3101,7 +3069,7 @@ return _c(&apos;div&apos;, {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3214,7 +3182,7 @@ return _c(&apos;div&apos;, {
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共19.7k字</span>
+  <span class="post-count">博客全站共21.0k字</span>
 </div>
         
 
