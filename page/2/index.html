@@ -241,6 +241,143 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/13/如何阅读框架源代码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YangYi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/myphoto.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨溢的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/13/如何阅读框架源代码/" itemprop="url">如何阅读框架源代码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-13T19:46:43+08:00">
+                2018-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>不管对于那个段位的 Developer 来说，读源码都是一件好处颇多的事情，特别于初学者而言，这能迅速的吸纳优秀框架精华代码营养，迅速成长。不巧的是，晦涩难懂的源码，很容易让人心生怯意。今天分享就来谈一谈读源码的方法，希望能帮到一些有心读源码的朋友</p>
+<h2 id="一、了解框架解决了什么问题"><a href="#一、了解框架解决了什么问题" class="headerlink" title="一、了解框架解决了什么问题"></a>一、了解框架解决了什么问题</h2></blockquote>
+<p>这不光对读源码有帮助，对整个学习都很有帮助。思考一个问题：你学习 Vue\React 的原因，除了它们如日中天，再不学习都不好意思找工作了，还掺杂了一些它们的某些优秀特性能给我带来某某好处的思考么？<br>新潮的框架，开发者需要而且也应该去了解，用人单位需要当然是本能的驱动力，什么火学什么也无可厚非，但是在闷声学习之前，需要加上一层思考，相比之前的技术体系，这个框架到底解决了什么问题，优势在哪，怀着目的去学习才不至于迷茫，例如 Vue\React 最大的优点是什么呢？组件化吧，带着框架是如何解决这个问题的疑问去学习，定能事半功倍<br>对于读源码来说，这一步就更关键了，如果都不了解代码是要干什么的，怎么会清楚它为什么这么写呢？再细分一下，在仔细阅读某个模块的文件的时候，也应当对模块的功能有个整体的把握</p>
+<h2 id="二、了解框架的设计思想"><a href="#二、了解框架的设计思想" class="headerlink" title="二、了解框架的设计思想"></a>二、了解框架的设计思想</h2><p>这一步尤为关键，我们看不懂源码（或者看起来举步维艰），并不是因为不懂某一句语法，而是不明白作者的思路。举一个简单的例子：<br>  //这个方法可以获得point2顶角的弧度值<br>    function getAngle(point1, point2, point3) {<br>        var bb = (point2.y - point1.y)<em>(point2.y - point1.y) + (point2.x - point1.x)</em>(point2.x - point1.x);<br>        var aa = (point3.y - point1.y)<em>(point3.y - point1.y) + (point3.x - point1.x)</em>(point3.x - point1.x);<br>        var cc = (point3.y - point2.y)<em>(point3.y - point2.y) + (point3.x - point2.x)</em>(point3.x - point2.x);<br>        var cosa = (bb + cc - aa)/(2<em>Math.sqrt(bb)</em>Math.sqrt(cc));<br>        return Math.acos(cosa);<br>    }<br>    getAngle 方法接收三个坐标参数，可以计算出 point2 顶角的弧度值，如果不告诉你这使用了运用三角形的余弦定理，恐怕你看半天也看不出来这是怎么算出来的</p>
+<p>那么我们可以通过什么渠道去了解框架的设计思想：</p>
+<ul>
+<li>到框架的官网看文档，开源的框架，甭管详不详细，这肯定是第一手权威资料</li>
+<li>到网上搜别人的分析总结(源码分析也不会少)，大多数情况下，都会有大神已经研究过了，站在巨人的肩膀上，能省不少事</li>
+</ul>
+<p>另外，设计思想是整个框架层面的，对于每一个实现细节，又会使用不少设计模式，例如函数式编程（Js 中最为常用）、单例模式、代理模式、工厂模式等等，这就需要平时的积累了。有一定代码量的积累之后，建议阅读一些设计模式类的书籍，对自己的代码设计，以及阅读别人的源码，都很有益处。</p>
+<h2 id="三、搭建调试环境，摸清执行主脉络"><a href="#三、搭建调试环境，摸清执行主脉络" class="headerlink" title="三、搭建调试环境，摸清执行主脉络"></a>三、搭建调试环境，摸清执行主脉络</h2><p>第一节我们提到，细分到每个模块，要对模块功能有个整体的把握，如何去做到这个“把握”？除了官方文档和网上查阅的资料，最好的办法就是写一个简单的 Demo，搭建好测试环境，增加一些调试信息，自然能理清除框架的生命周期中，每一步需要调用那个模块（对于目录结构很清晰的优秀框架，有时候也可以凭直觉猜测，打印日志确认）</p>
+<h2 id="四、分清主次"><a href="#四、分清主次" class="headerlink" title="四、分清主次"></a>四、分清主次</h2><p>框架源码就是一颗枝繁叶茂的参天大树，而你要做的事情是从根部网上爬。树要这么多分支，时间又是这么昂贵，阅读的策略很重要。我们的阅读路径，要以主要流程为主（也就是树的主驱赶，这样才能尽可能快的到达顶点），对于一些细枝末节，再这之后再来慢慢啃（或者有必要的时候）例如，要去阅读 Vue 的源码，有个目录是解析模板，生成语法树 AST 从而最终生成 Render Function 的, 其实这一步最关键的是这个 Render Function 的生成结果，对于如何去解析模板、生成语法树，可以先放一放，回头需要的时候再回头看。否则你很容易卡死在某个点上出不来，从而产生放弃的念头</p>
+<p>五、坚持不放弃<br>技术策略得当，遇到棘手过不去的问题也很正常，这个时候考验的就是毅力了，继续调试、搜索资料、或者找个大神来问一问都行，只要不放弃就好~~</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    <div>
+   
+    </div>
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/13/Vue-组件间的样式污染/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -838,7 +975,7 @@ ctx.stroke();
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -951,7 +1088,7 @@ ctx.stroke();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共21.0k字</span>
+  <span class="post-count">博客全站共23.1k字</span>
 </div>
         
 

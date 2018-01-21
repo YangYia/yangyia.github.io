@@ -241,6 +241,308 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YangYi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/myphoto.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨溢的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/21/爬虫溢关于Yeoman/" itemprop="url">爬虫溢关于Yeoman</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-21T17:30:23+08:00">
+                2018-01-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Yeoman官网教学案例：使用Yeoman构建WebApp</p>
+<h1 id="设置开发环境"><a href="#设置开发环境" class="headerlink" title="设置开发环境"></a>设置开发环境</h1><p>与 Yeoman 的所有交互都是通过命令行。Mac 系统使用 <code>terminal.app</code>，Linux 系统使用 <code>shell</code>，windows 系统可以使用 <code>cmder/PowerShell/cmd.exe</code>。</p>
+<h2 id="安装条件"><a href="#安装条件" class="headerlink" title="安装条件"></a>安装条件</h2><p>安装yeoman之前，你需要先安装如下内容</p>
+<ul>
+<li>Nodejs v4 或者更高版本</li>
+<li>npm</li>
+<li>git</li>
+</ul>
+<p>通过以下命令检查是否安装 Node 环境以及 npm 管理工具。</p>
+<pre><code>$ node -v &amp;&amp; npm -v
+</code></pre><p>npm 默认随 Node 一起安装。有些 Node 版本可能安装的是旧版本的 npm，你可以通过以下命令更新 npm</p>
+<pre><code>$ npm install -g npm@latest
+</code></pre><p>通过以下命名检查是否安装git</p>
+<pre><code>$ git --version
+</code></pre><h2 id="安装yeoman工具箱"><a href="#安装yeoman工具箱" class="headerlink" title="安装yeoman工具箱"></a>安装yeoman工具箱</h2><p>如果已经安装了 node 环境，可以通过以下命令安装 Yeoman</p>
+<pre><code>$ npm install -g yo
+</code></pre><h2 id="确认安装"><a href="#确认安装" class="headerlink" title="确认安装"></a>确认安装</h2><p>首先确认 Yeoman 是否正确安装</p>
+<pre><code>$ yo --version
+</code></pre><h1 id="安装Yeoman生成器"><a href="#安装Yeoman生成器" class="headerlink" title="安装Yeoman生成器"></a>安装Yeoman生成器</h1><p>在传统的 web开发中，你需要花大量时间为你的 webapp 设置模板代码、下载依赖包以及手动创建文件目录结构。Yeoman 的生成器会帮你搞定这一切。让我为 FountainJS 项目安装一个生成器。</p>
+<h2 id="安装生成器"><a href="#安装生成器" class="headerlink" title="安装生成器"></a>安装生成器</h2><p>你可以通过 npm 命令安装 Yeoman 生成器，目前可用的生成器超过了 3500 个，大多数都是开源社区贡献的。</p>
+<p>通过以下命令安装 <a href="https://www.npmjs.com/package/generator-fountain-webapp" target="_blank" rel="noopener">generator-fountain-webapp</a></p>
+<pre><code>$ npm install -g generator-fountain-webapp
+</code></pre><p>该命令将安装生成器所需的node包。</p>
+<p>和使用 <code>npm install</code> 一样，你可以通过 Yeoman 的交互菜单搜索 generators。</p>
+<p>运行 <code>yo</code> 然后选择 <strong>Install a generator</strong> 来搜索发布的生成器。</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic1.png" alt=" "></p>
+<h1 id="使用生成器搭建我们的app"><a href="#使用生成器搭建我们的app" class="headerlink" title="使用生成器搭建我们的app"></a>使用生成器搭建我们的app</h1><p>我们已经使用多次“脚手架”这个词，但是你可能还不知道它是什么意思。在 Yeoman的 语境中，脚手架材料表示通过一些配置为你的 webapp 生成文件。在这一步中，你会看到 Yeoman 如何为你喜欢的库及框架生成文件，以及使用如 <code>webpack/babel/Sass</code> 等一些额外的库的配置。</p>
+<h2 id="创建项目文件夹"><a href="#创建项目文件夹" class="headerlink" title="创建项目文件夹"></a>创建项目文件夹</h2><p>创建 <code>mytodo</code> 文件夹</p>
+<pre><code>$ mkdir mytodo &amp;&amp; cd mytodo
+</code></pre><p>生成器生成的脚手架文件会放在这个文件夹中。</p>
+<h2 id="通过-Yeoman-菜单使用生成器"><a href="#通过-Yeoman-菜单使用生成器" class="headerlink" title="通过 Yeoman 菜单使用生成器"></a>通过 Yeoman 菜单使用生成器</h2><p>再次运行 <code>yo</code></p>
+<pre><code>$ yo
+</code></pre><p>如果你已经安装了多个 generator，你需要从中选择一个。选中 <strong>Fountain Webapp</strong>，按回车 <strong>enter</strong> 运行生成器。</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic2.png" alt=" "></p>
+<h2 id="配置生成器"><a href="#配置生成器" class="headerlink" title="配置生成器"></a>配置生成器</h2><p>为了加快开发环境的初始化设置，有些生成器也会提供选项来自定义你的app的基础开发库。</p>
+<p>FountainJS 生成器提供一些选项来匹配你的喜好。</p>
+<ul>
+<li>框架（React，Angular2，Angular1）</li>
+<li>模块管理工具（Webpack，SystemJS，none with bower）</li>
+<li>JavaScript预处理器（babel，TypeScript，none）</li>
+<li>css 预处理器（Sass，Less，none）</li>
+<li>三个模板app（a landing page，hello world，TodoMVC）</li>
+</ul>
+<p>在该案例中，我们会使用 <strong>React, Webpack, Babel, SASS，Redux TodoMVC</strong> 模板。</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic3.png" alt=" "><br>方向键选择，回车键确认。</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic4.png" alt=" "><br>Yeoman 会自动搭建你的 app，获取依赖包。几分钟之后我们将进行下一步。</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic5.png" alt=" "></p>
+<h1 id="查看Yeoman生产的app的目录结构"><a href="#查看Yeoman生产的app的目录结构" class="headerlink" title="查看Yeoman生产的app的目录结构"></a>查看Yeoman生产的app的目录结构</h1><p>打开你的 <code>mytodo</code></p>
+<p>目录，看一下脚手架搭建了什么。应该如下图所示:</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic6.png" alt=" "></p>
+<p>在 <code>mytodo</code> 文件夹中，我们有：</p>
+<p><code>src</code>： web应用的父目录</p>
+<ul>
+<li><code>app</code>：React+Redux的代码</li>
+<li><code>index.html</code>：基础html文件</li>
+<li><code>index.js</code>：TodoMVC app 的入口文件</li>
+</ul>
+<p><code>conf</code>：配置文件及第三方工具的父目录（Bowersync，Webpack，Gulp，karma）</p>
+<p><code>gulp_tasks</code> 和  <code>gulpfile.js</code>：构建任务</p>
+<p><code>.babelrc</code>，<code>package.json</code>，<code>node_modules</code>：配置以及所需依赖包</p>
+<p><code>.gitattributes</code>  和 <code>.gitignore</code>：git的配置</p>
+<h1 id="在浏览器中预览你的app"><a href="#在浏览器中预览你的app" class="headerlink" title="在浏览器中预览你的app"></a>在浏览器中预览你的app</h1><p>如果想要在你喜欢的浏览器上预览你的 web app，你无须在电脑上做任何事情来设置本地服务器。这些都是 Yeoman 所做的一部分。</p>
+<h2 id="打开服务器"><a href="#打开服务器" class="headerlink" title="打开服务器"></a>打开服务器</h2><p>运行 npm 脚本，创建在 <code>localhost:3000</code> (或者<code>127.0.0.1:3000</code>) 上预览的基于 node 的本地 http 服务器。</p>
+<pre><code>$ npm run serve
+</code></pre><p>在浏览器的新页面打开<code>localhost:3000</code></p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic7.png" alt=" "></p>
+<h2 id="停止服务器"><a href="#停止服务器" class="headerlink" title="停止服务器"></a>停止服务器</h2><p>如果你想停止服务器，按 Ctrl + C 停止当前CLI的进程</p>
+<p>注意：你不能在同一端口运行多个http服务器（默认3000）</p>
+<h2 id="查看你的文件"><a href="#查看你的文件" class="headerlink" title="查看你的文件"></a>查看你的文件</h2><p>打开你喜欢的文本编辑器开始做点改变。每一次改变都会强制浏览器刷新而不需要你亲自操作。这种方式叫做即时加载（live reloading），可以实时查看app状态。</p>
+<p>即时加载的功能是通过配置 <code>gulpfile.js</code> 中的 gulp tasks 以及 <code>gulp_tasks/browsersync.js</code> 中的 Browsersync 实现的。它会监测你的文件的变化然后自动加载。</p>
+<p>如下，我们编辑 <code>src/app/components</code> 路径下的 <code>Header.js</code></p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic8.png" alt=" "></p>
+<p>修改立即生效</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic9.png" alt=" "></p>
+<h1 id="使用karma和jasmine测试"><a href="#使用karma和jasmine测试" class="headerlink" title="使用karma和jasmine测试"></a>使用karma和jasmine测试</h1><p>有些人可能不熟悉Karma，它是不依赖于框架的测试运行器。Fountainjs 生成器中已经包含 jasmine 测试框架。</p>
+<h2 id="运行测试单元"><a href="#运行测试单元" class="headerlink" title="运行测试单元"></a>运行测试单元</h2><p>让我们返回命令行按 Ctrl+C 停止本地服务器。<code>package.json</code> 中已经有了运行测试单元的 npm 脚本。可以如下运行</p>
+<pre><code>$ npm test
+</code></pre><p>每一个测试都应该通过</p>
+<h2 id="升级单元测试"><a href="#升级单元测试" class="headerlink" title="升级单元测试"></a>升级单元测试</h2><p>你可以在 <code>src</code> 文件夹中找到单元测试脚本，打开<code>src/app/reducers/todos.spec.js</code> 。这是为 Todos reducers 编写的单元测试。举个例子，我们看一下验证初始状态的第一个测试。</p>
+<pre><code>it(&apos;should handle initial state&apos;, () =&gt; {
+      expect(
+        todos(undefined, {})
+      ).toEqual([
+    {
+      text: &apos;Use Redux&apos;,
+      completed: false,
+      id: 0
+       }
+  ]);
+});
+</code></pre><p>按如下修改</p>
+<pre><code>it(&apos;should handle initial state&apos;, () =&gt; {
+      expect(
+        todos(undefined, {})
+      ).toEqual([
+        {
+         text: &apos;Use Yeoman&apos;, // &lt;=== here
+         completed: false,
+          id: 0
+     }
+    ]);
+  });
+</code></pre><p>重新运行 <code>npm test</code>，可以看到如下错误</p>
+<p>if you want run test automatically on change you can use <code>npm run test:auto instead</code></p>
+<p>打开 <code>src/app/reducers/todos.js</code></p>
+<p>把初始状态改成</p>
+<pre><code>const initialState = [
+      {
+    text: &apos;Use Yeoman&apos;,
+    completed: false,
+       id: 0
+     }
+];
+</code></pre><p>你成功修复了测试</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic10.png" alt=" "></p>
+<p>如果你的 app 越来越大或者更多的开发者参与进来，编写单元测试可以更容易的发现 bug。</p>
+<h1 id="使用-Local-Storage-永久保存-todos"><a href="#使用-Local-Storage-永久保存-todos" class="headerlink" title="使用 Local Storage 永久保存 todos"></a>使用 Local Storage 永久保存 todos</h1><p>让我们重新看一下当刷新浏览器时 React/Redux mytodo 不能保存的问题。</p>
+<h2 id="安装-npm-包"><a href="#安装-npm-包" class="headerlink" title="安装 npm 包"></a>安装 npm 包</h2><p>为了轻松解决这个问题，我们可以使用另一个Redux模块“<a href="https://github.com/elgerlambert/redux-localstorage/tree/1.0-breaking-changes" target="_blank" rel="noopener">redux-localstorage</a>”，它可以快速执行<a href="http://diveintohtml5.info/storage.html" target="_blank" rel="noopener">local storage</a>。</p>
+<p>运行以下命令</p>
+<pre><code>$ npm install --save redux-localstorage@rc
+</code></pre><p><img src="/2018/01/21/爬虫溢关于Yeoman/pic11.png" alt=" "></p>
+<h2 id="使用redux-localstorage"><a href="#使用redux-localstorage" class="headerlink" title="使用redux-localstorage"></a>使用redux-localstorage</h2><p>Redux 需要配置才能使用，将 <code>src/app/store/configureStore.js</code> 修改如下</p>
+<pre><code>import {compose, createStore} from &apos;redux&apos;;
+import rootReducer from &apos;../reducers&apos;;
+
+import persistState, {mergePersistedState} from &apos;redux-localstorage&apos;;
+import adapter from &apos;redux-localstorage/lib/adapters/localStorage&apos;;
+
+export default function configureStore(initialState) {
+  const reducer = compose(
+mergePersistedState()
+  )(rootReducer, initialState);
+
+  const storage = adapter(window.localStorage);
+
+  const createPersistentStore = compose(
+    persistState(storage, &apos;state&apos;)
+  )(createStore);
+
+  const store = createPersistentStore(reducer);
+  if (module.hot) {
+    // Enable Webpack hot module replacement for reducers
+    module.hot.accept(&apos;../reducers&apos;, () =&gt; {
+      const nextReducer = require(&apos;../reducers&apos;).default;
+      store.replaceReducer(nextReducer);
+    });
+  }
+
+  return store;
+}
+</code></pre><p>如果你浏览器中查看应用程序，你会在待办事项列表看到一项“Use Yeoman”。</p>
+<p>应用程序初始化时，如果本地存储是空的，则列表中不会有事项。</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic12.png" alt=" "></p>
+<p>继续前进，并添加一些项目到列表中：</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic13.png" alt=" "></p>
+<p>现在当我们刷新浏览器列表项依然存在。万岁!</p>
+<p>我们可以确认一下数据是否保存在本地存储中，打开chrome浏览器的检查工具，产看 Resources 面板，从左边栏选择 <strong>Local Storage</strong></p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic14.png" alt=" "></p>
+<h1 id="为生产做准备"><a href="#为生产做准备" class="headerlink" title="为生产做准备"></a>为生产做准备</h1><p>准备好把你 todo 应用程序展示给世界了吗？让我们尝试建立一个准备生产的版本。</p>
+<h2 id="优化产品文件"><a href="#优化产品文件" class="headerlink" title="优化产品文件"></a>优化产品文件</h2><p>为了创建应用程序的生产版本，我们需要</p>
+<ul>
+<li>lint 代码</li>
+<li>合并和缩小我们的脚本及样式来拯救那些网络请求</li>
+<li>编译预处理器的输出结果</li>
+<li>使应用程序更精炼</li>
+</ul>
+<p>哇！令人惊讶的是，所有运行都可以通过：</p>
+<pre><code>$ npm run build
+</code></pre><h2 id="建立及预览生产的应用程序"><a href="#建立及预览生产的应用程序" class="headerlink" title="建立及预览生产的应用程序"></a>建立及预览生产的应用程序</h2><p>如果想在本地预览 app，可以运行下面的 npm 脚本</p>
+<pre><code>$ npm run serve:dist
+</code></pre><p>它会创建你的项目并且启动本地服务器。</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic15.png" alt=" "></p>
+<blockquote>
+<p>功能强大的 JQuery 图片查看器 <a href="https://github.com/nzbin/magnify" target="_blank" rel="noopener">https://github.com/nzbin/magnify</a></p>
+<p>简化类名的轻量级 CSS 框架 <a href="https://github.com/nzbin/snack" target="_blank" rel="noopener">https://github.com/nzbin/snack</a></p>
+<p>与任意 UI 框架搭配使用的通用辅助类 <a href="https://github.com/nzbin/snack-helper" target="_blank" rel="noopener">https://github.com/nzbin/snack-helper</a></p>
+<p>类似纸牌游戏的卡片抽奖插件 <a href="https://github.com/nzbin/CardShow" target="_blank" rel="noopener">https://github.com/nzbin/CardShow</a></p>
+</blockquote>
+<p>本文参考：<a href="https://www.cnblogs.com/nzbin/p/5751323.html" target="_blank" rel="noopener">Yeoman官网教学案例</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    <div>
+   
+    </div>
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/21/爬虫溢关于svn/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2878,143 +3180,6 @@ return _c(&apos;div&apos;, {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/13/如何阅读框架源代码/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="YangYi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/myphoto.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杨溢的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/13/如何阅读框架源代码/" itemprop="url">如何阅读框架源代码</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-13T19:46:43+08:00">
-                2018-01-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>不管对于那个段位的 Developer 来说，读源码都是一件好处颇多的事情，特别于初学者而言，这能迅速的吸纳优秀框架精华代码营养，迅速成长。不巧的是，晦涩难懂的源码，很容易让人心生怯意。今天分享就来谈一谈读源码的方法，希望能帮到一些有心读源码的朋友</p>
-<h2 id="一、了解框架解决了什么问题"><a href="#一、了解框架解决了什么问题" class="headerlink" title="一、了解框架解决了什么问题"></a>一、了解框架解决了什么问题</h2></blockquote>
-<p>这不光对读源码有帮助，对整个学习都很有帮助。思考一个问题：你学习 Vue\React 的原因，除了它们如日中天，再不学习都不好意思找工作了，还掺杂了一些它们的某些优秀特性能给我带来某某好处的思考么？<br>新潮的框架，开发者需要而且也应该去了解，用人单位需要当然是本能的驱动力，什么火学什么也无可厚非，但是在闷声学习之前，需要加上一层思考，相比之前的技术体系，这个框架到底解决了什么问题，优势在哪，怀着目的去学习才不至于迷茫，例如 Vue\React 最大的优点是什么呢？组件化吧，带着框架是如何解决这个问题的疑问去学习，定能事半功倍<br>对于读源码来说，这一步就更关键了，如果都不了解代码是要干什么的，怎么会清楚它为什么这么写呢？再细分一下，在仔细阅读某个模块的文件的时候，也应当对模块的功能有个整体的把握</p>
-<h2 id="二、了解框架的设计思想"><a href="#二、了解框架的设计思想" class="headerlink" title="二、了解框架的设计思想"></a>二、了解框架的设计思想</h2><p>这一步尤为关键，我们看不懂源码（或者看起来举步维艰），并不是因为不懂某一句语法，而是不明白作者的思路。举一个简单的例子：<br>  //这个方法可以获得point2顶角的弧度值<br>    function getAngle(point1, point2, point3) {<br>        var bb = (point2.y - point1.y)<em>(point2.y - point1.y) + (point2.x - point1.x)</em>(point2.x - point1.x);<br>        var aa = (point3.y - point1.y)<em>(point3.y - point1.y) + (point3.x - point1.x)</em>(point3.x - point1.x);<br>        var cc = (point3.y - point2.y)<em>(point3.y - point2.y) + (point3.x - point2.x)</em>(point3.x - point2.x);<br>        var cosa = (bb + cc - aa)/(2<em>Math.sqrt(bb)</em>Math.sqrt(cc));<br>        return Math.acos(cosa);<br>    }<br>    getAngle 方法接收三个坐标参数，可以计算出 point2 顶角的弧度值，如果不告诉你这使用了运用三角形的余弦定理，恐怕你看半天也看不出来这是怎么算出来的</p>
-<p>那么我们可以通过什么渠道去了解框架的设计思想：</p>
-<ul>
-<li>到框架的官网看文档，开源的框架，甭管详不详细，这肯定是第一手权威资料</li>
-<li>到网上搜别人的分析总结(源码分析也不会少)，大多数情况下，都会有大神已经研究过了，站在巨人的肩膀上，能省不少事</li>
-</ul>
-<p>另外，设计思想是整个框架层面的，对于每一个实现细节，又会使用不少设计模式，例如函数式编程（Js 中最为常用）、单例模式、代理模式、工厂模式等等，这就需要平时的积累了。有一定代码量的积累之后，建议阅读一些设计模式类的书籍，对自己的代码设计，以及阅读别人的源码，都很有益处。</p>
-<h2 id="三、搭建调试环境，摸清执行主脉络"><a href="#三、搭建调试环境，摸清执行主脉络" class="headerlink" title="三、搭建调试环境，摸清执行主脉络"></a>三、搭建调试环境，摸清执行主脉络</h2><p>第一节我们提到，细分到每个模块，要对模块功能有个整体的把握，如何去做到这个“把握”？除了官方文档和网上查阅的资料，最好的办法就是写一个简单的 Demo，搭建好测试环境，增加一些调试信息，自然能理清除框架的生命周期中，每一步需要调用那个模块（对于目录结构很清晰的优秀框架，有时候也可以凭直觉猜测，打印日志确认）</p>
-<h2 id="四、分清主次"><a href="#四、分清主次" class="headerlink" title="四、分清主次"></a>四、分清主次</h2><p>框架源码就是一颗枝繁叶茂的参天大树，而你要做的事情是从根部网上爬。树要这么多分支，时间又是这么昂贵，阅读的策略很重要。我们的阅读路径，要以主要流程为主（也就是树的主驱赶，这样才能尽可能快的到达顶点），对于一些细枝末节，再这之后再来慢慢啃（或者有必要的时候）例如，要去阅读 Vue 的源码，有个目录是解析模板，生成语法树 AST 从而最终生成 Render Function 的, 其实这一步最关键的是这个 Render Function 的生成结果，对于如何去解析模板、生成语法树，可以先放一放，回头需要的时候再回头看。否则你很容易卡死在某个点上出不来，从而产生放弃的念头</p>
-<p>五、坚持不放弃<br>技术策略得当，遇到棘手过不去的问题也很正常，这个时候考验的就是毅力了，继续调试、搜索资料、或者找个大神来问一问都行，只要不放弃就好~~</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    <div>
-   
-    </div>
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3069,7 +3234,7 @@ return _c(&apos;div&apos;, {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3182,7 +3347,7 @@ return _c(&apos;div&apos;, {
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共21.0k字</span>
+  <span class="post-count">博客全站共23.1k字</span>
 </div>
         
 

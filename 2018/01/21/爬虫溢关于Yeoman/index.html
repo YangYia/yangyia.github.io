@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="杨溢的博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Yeoman官网教学案例：使用Yeoman构建WebApp 设置开发环境与 Yeoman 的所有交互都是通过命令行。Mac 系统使用 terminal.app，Linux 系统使用 shell，windows 系统可以使用 cmder/PowerShell/cmd.exe。 安装条件安装yeoman之前，你需要先安装如下内容  Nodejs v4 或者更高版本 npm git  通过以下命令检查是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="爬虫溢关于Yeoman">
+<meta property="og:url" content="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/index.html">
+<meta property="og:site_name" content="杨溢的博客">
+<meta property="og:description" content="Yeoman官网教学案例：使用Yeoman构建WebApp 设置开发环境与 Yeoman 的所有交互都是通过命令行。Mac 系统使用 terminal.app，Linux 系统使用 shell，windows 系统可以使用 cmder/PowerShell/cmd.exe。 安装条件安装yeoman之前，你需要先安装如下内容  Nodejs v4 或者更高版本 npm git  通过以下命令检查是">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/pic1.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/pic2.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/pic3.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/pic4.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/pic5.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/pic6.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/pic7.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/pic8.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/pic9.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/pic10.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/pic11.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/pic12.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/pic13.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/pic14.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/pic15.png">
+<meta property="og:updated_time" content="2018-01-21T10:53:19.629Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="爬虫溢关于Yeoman">
+<meta name="twitter:description" content="Yeoman官网教学案例：使用Yeoman构建WebApp 设置开发环境与 Yeoman 的所有交互都是通过命令行。Mac 系统使用 terminal.app，Linux 系统使用 shell，windows 系统可以使用 cmder/PowerShell/cmd.exe。 安装条件安装yeoman之前，你需要先安装如下内容  Nodejs v4 或者更高版本 npm git  通过以下命令检查是">
+<meta name="twitter:image" content="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/pic1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/"/>
+
+
+
+
+
+  <title>爬虫溢关于Yeoman | 杨溢的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/YangYia"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨溢的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">努力向上爬的小人物</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/21/爬虫溢关于Yeoman/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YangYi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/myphoto.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨溢的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">爬虫溢关于Yeoman</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-21T17:30:23+08:00">
+                2018-01-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Yeoman官网教学案例：使用Yeoman构建WebApp</p>
+<h1 id="设置开发环境"><a href="#设置开发环境" class="headerlink" title="设置开发环境"></a>设置开发环境</h1><p>与 Yeoman 的所有交互都是通过命令行。Mac 系统使用 <code>terminal.app</code>，Linux 系统使用 <code>shell</code>，windows 系统可以使用 <code>cmder/PowerShell/cmd.exe</code>。</p>
+<h2 id="安装条件"><a href="#安装条件" class="headerlink" title="安装条件"></a>安装条件</h2><p>安装yeoman之前，你需要先安装如下内容</p>
+<ul>
+<li>Nodejs v4 或者更高版本</li>
+<li>npm</li>
+<li>git</li>
+</ul>
+<p>通过以下命令检查是否安装 Node 环境以及 npm 管理工具。</p>
+<pre><code>$ node -v &amp;&amp; npm -v
+</code></pre><p>npm 默认随 Node 一起安装。有些 Node 版本可能安装的是旧版本的 npm，你可以通过以下命令更新 npm</p>
+<pre><code>$ npm install -g npm@latest
+</code></pre><p>通过以下命名检查是否安装git</p>
+<pre><code>$ git --version
+</code></pre><h2 id="安装yeoman工具箱"><a href="#安装yeoman工具箱" class="headerlink" title="安装yeoman工具箱"></a>安装yeoman工具箱</h2><p>如果已经安装了 node 环境，可以通过以下命令安装 Yeoman</p>
+<pre><code>$ npm install -g yo
+</code></pre><h2 id="确认安装"><a href="#确认安装" class="headerlink" title="确认安装"></a>确认安装</h2><p>首先确认 Yeoman 是否正确安装</p>
+<pre><code>$ yo --version
+</code></pre><h1 id="安装Yeoman生成器"><a href="#安装Yeoman生成器" class="headerlink" title="安装Yeoman生成器"></a>安装Yeoman生成器</h1><p>在传统的 web开发中，你需要花大量时间为你的 webapp 设置模板代码、下载依赖包以及手动创建文件目录结构。Yeoman 的生成器会帮你搞定这一切。让我为 FountainJS 项目安装一个生成器。</p>
+<h2 id="安装生成器"><a href="#安装生成器" class="headerlink" title="安装生成器"></a>安装生成器</h2><p>你可以通过 npm 命令安装 Yeoman 生成器，目前可用的生成器超过了 3500 个，大多数都是开源社区贡献的。</p>
+<p>通过以下命令安装 <a href="https://www.npmjs.com/package/generator-fountain-webapp" target="_blank" rel="noopener">generator-fountain-webapp</a></p>
+<pre><code>$ npm install -g generator-fountain-webapp
+</code></pre><p>该命令将安装生成器所需的node包。</p>
+<p>和使用 <code>npm install</code> 一样，你可以通过 Yeoman 的交互菜单搜索 generators。</p>
+<p>运行 <code>yo</code> 然后选择 <strong>Install a generator</strong> 来搜索发布的生成器。</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic1.png" alt=" "></p>
+<h1 id="使用生成器搭建我们的app"><a href="#使用生成器搭建我们的app" class="headerlink" title="使用生成器搭建我们的app"></a>使用生成器搭建我们的app</h1><p>我们已经使用多次“脚手架”这个词，但是你可能还不知道它是什么意思。在 Yeoman的 语境中，脚手架材料表示通过一些配置为你的 webapp 生成文件。在这一步中，你会看到 Yeoman 如何为你喜欢的库及框架生成文件，以及使用如 <code>webpack/babel/Sass</code> 等一些额外的库的配置。</p>
+<h2 id="创建项目文件夹"><a href="#创建项目文件夹" class="headerlink" title="创建项目文件夹"></a>创建项目文件夹</h2><p>创建 <code>mytodo</code> 文件夹</p>
+<pre><code>$ mkdir mytodo &amp;&amp; cd mytodo
+</code></pre><p>生成器生成的脚手架文件会放在这个文件夹中。</p>
+<h2 id="通过-Yeoman-菜单使用生成器"><a href="#通过-Yeoman-菜单使用生成器" class="headerlink" title="通过 Yeoman 菜单使用生成器"></a>通过 Yeoman 菜单使用生成器</h2><p>再次运行 <code>yo</code></p>
+<pre><code>$ yo
+</code></pre><p>如果你已经安装了多个 generator，你需要从中选择一个。选中 <strong>Fountain Webapp</strong>，按回车 <strong>enter</strong> 运行生成器。</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic2.png" alt=" "></p>
+<h2 id="配置生成器"><a href="#配置生成器" class="headerlink" title="配置生成器"></a>配置生成器</h2><p>为了加快开发环境的初始化设置，有些生成器也会提供选项来自定义你的app的基础开发库。</p>
+<p>FountainJS 生成器提供一些选项来匹配你的喜好。</p>
+<ul>
+<li>框架（React，Angular2，Angular1）</li>
+<li>模块管理工具（Webpack，SystemJS，none with bower）</li>
+<li>JavaScript预处理器（babel，TypeScript，none）</li>
+<li>css 预处理器（Sass，Less，none）</li>
+<li>三个模板app（a landing page，hello world，TodoMVC）</li>
+</ul>
+<p>在该案例中，我们会使用 <strong>React, Webpack, Babel, SASS，Redux TodoMVC</strong> 模板。</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic3.png" alt=" "><br>方向键选择，回车键确认。</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic4.png" alt=" "><br>Yeoman 会自动搭建你的 app，获取依赖包。几分钟之后我们将进行下一步。</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic5.png" alt=" "></p>
+<h1 id="查看Yeoman生产的app的目录结构"><a href="#查看Yeoman生产的app的目录结构" class="headerlink" title="查看Yeoman生产的app的目录结构"></a>查看Yeoman生产的app的目录结构</h1><p>打开你的 <code>mytodo</code></p>
+<p>目录，看一下脚手架搭建了什么。应该如下图所示:</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic6.png" alt=" "></p>
+<p>在 <code>mytodo</code> 文件夹中，我们有：</p>
+<p><code>src</code>： web应用的父目录</p>
+<ul>
+<li><code>app</code>：React+Redux的代码</li>
+<li><code>index.html</code>：基础html文件</li>
+<li><code>index.js</code>：TodoMVC app 的入口文件</li>
+</ul>
+<p><code>conf</code>：配置文件及第三方工具的父目录（Bowersync，Webpack，Gulp，karma）</p>
+<p><code>gulp_tasks</code> 和  <code>gulpfile.js</code>：构建任务</p>
+<p><code>.babelrc</code>，<code>package.json</code>，<code>node_modules</code>：配置以及所需依赖包</p>
+<p><code>.gitattributes</code>  和 <code>.gitignore</code>：git的配置</p>
+<h1 id="在浏览器中预览你的app"><a href="#在浏览器中预览你的app" class="headerlink" title="在浏览器中预览你的app"></a>在浏览器中预览你的app</h1><p>如果想要在你喜欢的浏览器上预览你的 web app，你无须在电脑上做任何事情来设置本地服务器。这些都是 Yeoman 所做的一部分。</p>
+<h2 id="打开服务器"><a href="#打开服务器" class="headerlink" title="打开服务器"></a>打开服务器</h2><p>运行 npm 脚本，创建在 <code>localhost:3000</code> (或者<code>127.0.0.1:3000</code>) 上预览的基于 node 的本地 http 服务器。</p>
+<pre><code>$ npm run serve
+</code></pre><p>在浏览器的新页面打开<code>localhost:3000</code></p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic7.png" alt=" "></p>
+<h2 id="停止服务器"><a href="#停止服务器" class="headerlink" title="停止服务器"></a>停止服务器</h2><p>如果你想停止服务器，按 Ctrl + C 停止当前CLI的进程</p>
+<p>注意：你不能在同一端口运行多个http服务器（默认3000）</p>
+<h2 id="查看你的文件"><a href="#查看你的文件" class="headerlink" title="查看你的文件"></a>查看你的文件</h2><p>打开你喜欢的文本编辑器开始做点改变。每一次改变都会强制浏览器刷新而不需要你亲自操作。这种方式叫做即时加载（live reloading），可以实时查看app状态。</p>
+<p>即时加载的功能是通过配置 <code>gulpfile.js</code> 中的 gulp tasks 以及 <code>gulp_tasks/browsersync.js</code> 中的 Browsersync 实现的。它会监测你的文件的变化然后自动加载。</p>
+<p>如下，我们编辑 <code>src/app/components</code> 路径下的 <code>Header.js</code></p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic8.png" alt=" "></p>
+<p>修改立即生效</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic9.png" alt=" "></p>
+<h1 id="使用karma和jasmine测试"><a href="#使用karma和jasmine测试" class="headerlink" title="使用karma和jasmine测试"></a>使用karma和jasmine测试</h1><p>有些人可能不熟悉Karma，它是不依赖于框架的测试运行器。Fountainjs 生成器中已经包含 jasmine 测试框架。</p>
+<h2 id="运行测试单元"><a href="#运行测试单元" class="headerlink" title="运行测试单元"></a>运行测试单元</h2><p>让我们返回命令行按 Ctrl+C 停止本地服务器。<code>package.json</code> 中已经有了运行测试单元的 npm 脚本。可以如下运行</p>
+<pre><code>$ npm test
+</code></pre><p>每一个测试都应该通过</p>
+<h2 id="升级单元测试"><a href="#升级单元测试" class="headerlink" title="升级单元测试"></a>升级单元测试</h2><p>你可以在 <code>src</code> 文件夹中找到单元测试脚本，打开<code>src/app/reducers/todos.spec.js</code> 。这是为 Todos reducers 编写的单元测试。举个例子，我们看一下验证初始状态的第一个测试。</p>
+<pre><code>it(&apos;should handle initial state&apos;, () =&gt; {
+      expect(
+        todos(undefined, {})
+      ).toEqual([
+    {
+      text: &apos;Use Redux&apos;,
+      completed: false,
+      id: 0
+       }
+  ]);
+});
+</code></pre><p>按如下修改</p>
+<pre><code>it(&apos;should handle initial state&apos;, () =&gt; {
+      expect(
+        todos(undefined, {})
+      ).toEqual([
+        {
+         text: &apos;Use Yeoman&apos;, // &lt;=== here
+         completed: false,
+          id: 0
+     }
+    ]);
+  });
+</code></pre><p>重新运行 <code>npm test</code>，可以看到如下错误</p>
+<p>if you want run test automatically on change you can use <code>npm run test:auto instead</code></p>
+<p>打开 <code>src/app/reducers/todos.js</code></p>
+<p>把初始状态改成</p>
+<pre><code>const initialState = [
+      {
+    text: &apos;Use Yeoman&apos;,
+    completed: false,
+       id: 0
+     }
+];
+</code></pre><p>你成功修复了测试</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic10.png" alt=" "></p>
+<p>如果你的 app 越来越大或者更多的开发者参与进来，编写单元测试可以更容易的发现 bug。</p>
+<h1 id="使用-Local-Storage-永久保存-todos"><a href="#使用-Local-Storage-永久保存-todos" class="headerlink" title="使用 Local Storage 永久保存 todos"></a>使用 Local Storage 永久保存 todos</h1><p>让我们重新看一下当刷新浏览器时 React/Redux mytodo 不能保存的问题。</p>
+<h2 id="安装-npm-包"><a href="#安装-npm-包" class="headerlink" title="安装 npm 包"></a>安装 npm 包</h2><p>为了轻松解决这个问题，我们可以使用另一个Redux模块“<a href="https://github.com/elgerlambert/redux-localstorage/tree/1.0-breaking-changes" target="_blank" rel="noopener">redux-localstorage</a>”，它可以快速执行<a href="http://diveintohtml5.info/storage.html" target="_blank" rel="noopener">local storage</a>。</p>
+<p>运行以下命令</p>
+<pre><code>$ npm install --save redux-localstorage@rc
+</code></pre><p><img src="/2018/01/21/爬虫溢关于Yeoman/pic11.png" alt=" "></p>
+<h2 id="使用redux-localstorage"><a href="#使用redux-localstorage" class="headerlink" title="使用redux-localstorage"></a>使用redux-localstorage</h2><p>Redux 需要配置才能使用，将 <code>src/app/store/configureStore.js</code> 修改如下</p>
+<pre><code>import {compose, createStore} from &apos;redux&apos;;
+import rootReducer from &apos;../reducers&apos;;
+
+import persistState, {mergePersistedState} from &apos;redux-localstorage&apos;;
+import adapter from &apos;redux-localstorage/lib/adapters/localStorage&apos;;
+
+export default function configureStore(initialState) {
+  const reducer = compose(
+mergePersistedState()
+  )(rootReducer, initialState);
+
+  const storage = adapter(window.localStorage);
+
+  const createPersistentStore = compose(
+    persistState(storage, &apos;state&apos;)
+  )(createStore);
+
+  const store = createPersistentStore(reducer);
+  if (module.hot) {
+    // Enable Webpack hot module replacement for reducers
+    module.hot.accept(&apos;../reducers&apos;, () =&gt; {
+      const nextReducer = require(&apos;../reducers&apos;).default;
+      store.replaceReducer(nextReducer);
+    });
+  }
+
+  return store;
+}
+</code></pre><p>如果你浏览器中查看应用程序，你会在待办事项列表看到一项“Use Yeoman”。</p>
+<p>应用程序初始化时，如果本地存储是空的，则列表中不会有事项。</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic12.png" alt=" "></p>
+<p>继续前进，并添加一些项目到列表中：</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic13.png" alt=" "></p>
+<p>现在当我们刷新浏览器列表项依然存在。万岁!</p>
+<p>我们可以确认一下数据是否保存在本地存储中，打开chrome浏览器的检查工具，产看 Resources 面板，从左边栏选择 <strong>Local Storage</strong></p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic14.png" alt=" "></p>
+<h1 id="为生产做准备"><a href="#为生产做准备" class="headerlink" title="为生产做准备"></a>为生产做准备</h1><p>准备好把你 todo 应用程序展示给世界了吗？让我们尝试建立一个准备生产的版本。</p>
+<h2 id="优化产品文件"><a href="#优化产品文件" class="headerlink" title="优化产品文件"></a>优化产品文件</h2><p>为了创建应用程序的生产版本，我们需要</p>
+<ul>
+<li>lint 代码</li>
+<li>合并和缩小我们的脚本及样式来拯救那些网络请求</li>
+<li>编译预处理器的输出结果</li>
+<li>使应用程序更精炼</li>
+</ul>
+<p>哇！令人惊讶的是，所有运行都可以通过：</p>
+<pre><code>$ npm run build
+</code></pre><h2 id="建立及预览生产的应用程序"><a href="#建立及预览生产的应用程序" class="headerlink" title="建立及预览生产的应用程序"></a>建立及预览生产的应用程序</h2><p>如果想在本地预览 app，可以运行下面的 npm 脚本</p>
+<pre><code>$ npm run serve:dist
+</code></pre><p>它会创建你的项目并且启动本地服务器。</p>
+<p><img src="/2018/01/21/爬虫溢关于Yeoman/pic15.png" alt=" "></p>
+<blockquote>
+<p>功能强大的 JQuery 图片查看器 <a href="https://github.com/nzbin/magnify" target="_blank" rel="noopener">https://github.com/nzbin/magnify</a></p>
+<p>简化类名的轻量级 CSS 框架 <a href="https://github.com/nzbin/snack" target="_blank" rel="noopener">https://github.com/nzbin/snack</a></p>
+<p>与任意 UI 框架搭配使用的通用辅助类 <a href="https://github.com/nzbin/snack-helper" target="_blank" rel="noopener">https://github.com/nzbin/snack-helper</a></p>
+<p>类似纸牌游戏的卡片抽奖插件 <a href="https://github.com/nzbin/CardShow" target="_blank" rel="noopener">https://github.com/nzbin/CardShow</a></p>
+</blockquote>
+<p>本文参考：<a href="https://www.cnblogs.com/nzbin/p/5751323.html" target="_blank" rel="noopener">Yeoman官网教学案例</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    <div>
+   
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+   
+    </div>
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/21/爬虫溢关于svn/" rel="next" title="爬虫溢关于svn">
+                <i class="fa fa-chevron-left"></i> 爬虫溢关于svn
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/myphoto.jpg"
+                alt="YangYi" />
+            
+              <p class="site-author-name" itemprop="name">YangYi</p>
+              <p class="site-description motion-element" itemprop="description">技术和生活，我融为一体。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/YangYia" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:605861012@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://coding.net/u/YangOne" target="_blank" title="Coding.NET">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Coding.NET</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/2870735370" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/89120adc0314" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/yxy931113" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#设置开发环境"><span class="nav-number">1.</span> <span class="nav-text">设置开发环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装条件"><span class="nav-number">1.1.</span> <span class="nav-text">安装条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装yeoman工具箱"><span class="nav-number">1.2.</span> <span class="nav-text">安装yeoman工具箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#确认安装"><span class="nav-number">1.3.</span> <span class="nav-text">确认安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Yeoman生成器"><span class="nav-number">2.</span> <span class="nav-text">安装Yeoman生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装生成器"><span class="nav-number">2.1.</span> <span class="nav-text">安装生成器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用生成器搭建我们的app"><span class="nav-number">3.</span> <span class="nav-text">使用生成器搭建我们的app</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建项目文件夹"><span class="nav-number">3.1.</span> <span class="nav-text">创建项目文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过-Yeoman-菜单使用生成器"><span class="nav-number">3.2.</span> <span class="nav-text">通过 Yeoman 菜单使用生成器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置生成器"><span class="nav-number">3.3.</span> <span class="nav-text">配置生成器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看Yeoman生产的app的目录结构"><span class="nav-number">4.</span> <span class="nav-text">查看Yeoman生产的app的目录结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在浏览器中预览你的app"><span class="nav-number">5.</span> <span class="nav-text">在浏览器中预览你的app</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#打开服务器"><span class="nav-number">5.1.</span> <span class="nav-text">打开服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#停止服务器"><span class="nav-number">5.2.</span> <span class="nav-text">停止服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看你的文件"><span class="nav-number">5.3.</span> <span class="nav-text">查看你的文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用karma和jasmine测试"><span class="nav-number">6.</span> <span class="nav-text">使用karma和jasmine测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#运行测试单元"><span class="nav-number">6.1.</span> <span class="nav-text">运行测试单元</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级单元测试"><span class="nav-number">6.2.</span> <span class="nav-text">升级单元测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-Local-Storage-永久保存-todos"><span class="nav-number">7.</span> <span class="nav-text">使用 Local Storage 永久保存 todos</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-npm-包"><span class="nav-number">7.1.</span> <span class="nav-text">安装 npm 包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用redux-localstorage"><span class="nav-number">7.2.</span> <span class="nav-text">使用redux-localstorage</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为生产做准备"><span class="nav-number">8.</span> <span class="nav-text">为生产做准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优化产品文件"><span class="nav-number">8.1.</span> <span class="nav-text">优化产品文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立及预览生产的应用程序"><span class="nav-number">8.2.</span> <span class="nav-text">建立及预览生产的应用程序</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YangYi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共23.1k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
